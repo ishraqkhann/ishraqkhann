@@ -20,14 +20,6 @@
 
 <p align="center">
   <a href="https://ishraqkhan.com"><img alt="Ishraq Khan — founder and CEO of Kodezi. A macOS desktop with a terminal open, showing origin, role, languages and live GitHub statistics." src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/desktop_light.svg"></a>
-  <br>
   <a href="https://ishraqkhan.com" title="ishraqkhan.com"><img src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock0_globe.svg" alt="Website" height="72"></a><a href="https://kodezi.com" title="kodezi.com"><img src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock1_kodezi.svg" alt="Kodezi" height="72"></a><a href="mailto:ishraq@kodezi.com" title="ishraq@kodezi.com"><img src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock2_email.svg" alt="Email" height="72"></a><a href="https://www.linkedin.com/in/ishraqkhann/" title="LinkedIn"><img src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock3_linkedin.svg" alt="LinkedIn" height="72"></a><a href="https://x.com/ishraqkhann" title="@ishraqkhann"><img src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock4_x.svg" alt="X" height="72"></a>
 </p>
 
-|   |   |
-| --- | --- |
-| **Kodezi** | [kodezi.com](https://kodezi.com) |
-| **Website** | [ishraqkhan.com](https://ishraqkhan.com) |
-| **Email** | [ishraq@kodezi.com](mailto:ishraq@kodezi.com) |
-| **X** | [@ishraqkhann](https://x.com/ishraqkhann) |
-| **LinkedIn** | [ishraqkhann](https://www.linkedin.com/in/ishraqkhann/) |

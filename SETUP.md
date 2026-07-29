@@ -205,6 +205,14 @@ inline elements renders as a space. Flush tags join perfectly. If you ever
 reformat `README.md` and something "prettifies" that line onto several lines,
 the dock will break into five tiles — that is the cause.
 
+**The 6px gap.** There is a 6 pixel white line between the hero and the dock,
+and it cannot be closed. It is the descender space under an inline image — the
+line box reserves room below the baseline whether or not anything sits there.
+Measured both ways: removing every scrap of whitespace between the tags changes
+nothing, because the gap is not whitespace. Closing it needs
+`vertical-align: bottom` or `display: block`, and GitHub strips `style` and
+`class` off everything. Six pixels is the floor for stacked images in Markdown.
+
 **Size.** The segments are 76 × 92 each, so the bar is 380px at native size.
 The README scales it to 297px with `height="72"`, which is the one that sits
 right: native reads oversized next to the window, and 244px — the width the dock
