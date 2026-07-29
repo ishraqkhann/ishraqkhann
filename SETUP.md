@@ -205,6 +205,13 @@ inline elements renders as a space. Flush tags join perfectly. If you ever
 reformat `README.md` and something "prettifies" that line onto several lines,
 the dock will break into five tiles — that is the cause.
 
+**Size.** The segments are 76 × 92 each, so the bar is 380px at native size.
+The README scales it to 297px with `height="72"`, which is the one that sits
+right: native reads oversized next to the window, and 244px — the width the dock
+actually had when it was drawn inside the hero — shrinks the icons enough to
+lose their detail. All three join seamlessly at 3× zoom, so this is a
+proportion call, not a technical limit.
+
 The blur is baked in Pillow rather than applied with an `feGaussianBlur` per
 file: a filter would sample each slice in isolation and band at the joins.
 `strip_segment()` and `_strip_backdrop_slices()` in `ui.py`.
