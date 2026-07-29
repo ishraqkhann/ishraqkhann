@@ -188,12 +188,19 @@ The one genuinely interactive thing GitHub *does* allow is `<details>` — which
 exactly what the README is built on. Every window up there opens and closes for
 real, because each one is a `<details>` block.
 
-The Dock has the same problem and a different answer. The icons in the hero are
-real `<a>` elements inside the SVG, and none of them can be clicked on GitHub.
-So the README repeats the same five icons underneath the desktop as standalone
-`icon_*.svg` files, each wrapped in its own Markdown `<a>`. Those *are*
-clickable — verified against GitHub's renderer, which keeps all five anchors and
-their `width` attributes. `icon_file()` in `ui.py` generates them.
+**The Dock is not in the hero image.** It used to be, and that was a mistake: a
+dock drawn into the SVG cannot be clicked on GitHub, so having it there *and*
+having the clickable icon row underneath rendered the same five icons twice, one
+set of them dead.
+
+The dock now exists only as five standalone `icon_*.svg` files, each wrapped in
+its own Markdown `<a>` under the desktop. Those genuinely click through —
+verified against GitHub's renderer, which keeps all five anchors and their
+`width` attributes. `icon_file()` in `ui.py` generates them; `desktop_dock()` is
+still there but unused, if you ever want it drawn back in.
+
+Dropping it also took the hero from 244 KB to 103 KB, because the five icons are
+no longer base64-inlined into it on top of existing as their own files.
 
 ### The close button
 

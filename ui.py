@@ -903,8 +903,12 @@ def desktop(theme, live, portrait, build_date, clock=None):
     win_x = 84
     win_y = menu_h + 58
     w = card_w + win_x * 2
-    dock_y = win_y + card_h + 44
-    h = dock_y + 56 + 34 + 30      # bar height + room for the dots
+    # No dock in the hero. It used to be drawn here, but the README also lays
+    # the same five icons out underneath as real anchors - and only those can
+    # be clicked, because GitHub renders this file as an <img>. Two docks, one
+    # of them dead, looked exactly like the mistake it was. The window now just
+    # sits on the desktop with some wallpaper showing below it.
+    h = win_y + card_h + 64
 
     photo, _bytes = wallpaper_image()
     if photo:
@@ -979,14 +983,13 @@ def desktop(theme, live, portrait, build_date, clock=None):
         '<g id="win">\n%(term)s\n'
         '<set attributeName="display" to="none" begin="btnClose.click" fill="freeze"/>\n'
         '<set attributeName="display" to="inline" begin="reopen.click" fill="freeze"/>\n'
-        "</g>\n%(closed)s\n%(dock)s\n</svg>\n"
+        "</g>\n%(closed)s\n</svg>\n"
         % {
             "w": w, "h": h, "mono": MONO, "fs": themes.INFO_FONT,
             "text": theme["text"], "style": style, "defs": defs_extra,
             "paint": paint,
             "menu": desktop_menubar(theme, wp, w, day_label, clock, paint),
             "term": terminal, "closed": closed,
-            "dock": desktop_dock(theme, wp, w, dock_y, paint),
         }
     )
 
