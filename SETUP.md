@@ -193,11 +193,25 @@ dock drawn into the SVG cannot be clicked on GitHub, so having it there *and*
 having the clickable icon row underneath rendered the same five icons twice, one
 set of them dead.
 
-The dock now exists only as five standalone `icon_*.svg` files, each wrapped in
-its own Markdown `<a>` under the desktop. Those genuinely click through —
-verified against GitHub's renderer, which keeps all five anchors and their
-`width` attributes. `icon_file()` in `ui.py` generates them; `desktop_dock()` is
-still there but unused, if you ever want it drawn back in.
+The dock now lives outside the hero as five separate files — `dock0_globe.svg`
+through `dock4_x.svg`. Each carries its own slice of the glass bar plus a
+matching blurred crop of the wallpaper, so set flush against each other they
+join into a single continuous dock, and each one is a real anchor.
+
+**The tags must have zero whitespace between them.** This was measured, not
+assumed: three variants rendered side by side, and a newline between the tags
+produced a visible gap through the bar every time, because whitespace between
+inline elements renders as a space. Flush tags join perfectly. If you ever
+reformat `README.md` and something "prettifies" that line onto several lines,
+the dock will break into five tiles — that is the cause.
+
+The blur is baked in Pillow rather than applied with an `feGaussianBlur` per
+file: a filter would sample each slice in isolation and band at the joins.
+`strip_segment()` and `_strip_backdrop_slices()` in `ui.py`.
+
+`icon_*.svg` are the same icons standalone on transparent, if you want them
+without the bar. `desktop_dock()` still exists too, if you ever want it drawn
+back into the hero.
 
 Dropping it also took the hero from 244 KB to 103 KB, because the five icons are
 no longer base64-inlined into it on top of existing as their own files.

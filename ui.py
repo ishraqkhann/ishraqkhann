@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import base64
 import datetime
+import io
 import os
 
 import config
@@ -999,13 +1000,131 @@ def desktop(theme, live, portrait, build_date, clock=None):
 # --------------------------------------------------------------------------
 
 
-def icon_file(key, size=128):
-    """One dock icon on its own, so the README can link each one separately.
+# The dock strip: one glass bar sliced into five images.
+#
+# GitHub will not let the dock inside the hero be clicked, and it will not let
+# CSS position anything over an image. The only way to get a dock that is both
+# clickable and looks like one bar is to cut the bar into five files and set
+# them flush against each other in the Markdown, with no whitespace between the
+# tags - whitespace between inline elements renders as a visible gap.
+#
+# Each slice carries its own pre-blurred crop of the wallpaper, so the frosted
+# backdrop runs continuously across all five.
 
-    The dock inside the hero image cannot be clicked - GitHub renders it as
-    an <img>, where link traversal is off. These let the README lay the same
-    five icons out underneath it as real anchors.
+STRIP_SEG_W = 76
+STRIP_H = 92
+STRIP_ICON = 56
+STRIP_R = 24
+
+
+def _strip_backdrop_slices():
     """
+    Slice a blurred crop of the wallpaper into five, one per segment.
+
+    Blurred here in Pillow rather than with an SVG filter: the crop is tiny, a
+    baked blur costs nothing at render time, and it guarantees every slice is
+    blurred identically. An feGaussianBlur per file would sample each slice
+    separately and band at the joins.
+    """
+    try:
+        from PIL import Image, ImageFilter
+    except ImportError:
+        return [None] * len(DOCK_APPS)
+
+    src = None
+    for ext in ("webp", "png", "jpg", "jpeg"):
+        path = os.path.join("assets", "wallpaper." + ext)
+        if os.path.exists(path):
+            src = path
+            break
+    if src is None:
+        return [None] * len(DOCK_APPS)
+
+    n = len(DOCK_APPS)
+    total_w = STRIP_SEG_W * n
+    img = Image.open(src).convert("RGB")
+
+    # Take the band from just under where the Terminal window sits, so the
+    # glass is showing roughly the part of the wallpaper it would if the dock
+    # were still drawn into the desktop.
+    band_h = int(img.height * 0.11)
+    top = int(img.height * 0.80)
+    left = (img.width - int(img.width * 0.30)) // 2
+    crop = img.crop((left, top, left + int(img.width * 0.30), top + band_h))
+    crop = crop.resize((total_w * 3, STRIP_H * 3), Image.LANCZOS)
+    crop = crop.filter(ImageFilter.GaussianBlur(radius=26))
+    crop = crop.resize((total_w, STRIP_H), Image.LANCZOS)
+
+    out = []
+    for i in range(n):
+        seg = crop.crop((i * STRIP_SEG_W, 0, (i + 1) * STRIP_SEG_W, STRIP_H))
+        buf = io.BytesIO()
+        seg.save(buf, "WEBP", quality=90, method=6)
+        out.append("data:image/webp;base64,"
+                   + base64.b64encode(buf.getvalue()).decode("ascii"))
+    return out
+
+
+def strip_segment(index, key, backdrop, wp):
+    """One slice of the dock. Rounded only on the outer edge of the end pieces."""
+    n = len(DOCK_APPS)
+    w, h, r = STRIP_SEG_W, STRIP_H, STRIP_R
+    first, last = index == 0, index == n - 1
+
+    # Draw a rect that is wider than the slice and let the viewBox crop it, so
+    # only the outer corners of the end pieces are ever rounded.
+    x = 0 if first else -r - 2
+    rw = w + (0 if first else r + 2) + (0 if last else r + 2)
+
+    icon_x = (w - STRIP_ICON) / 2
+    icon_y = (h - STRIP_ICON) / 2
+
+    bg = ('<image href="%s" x="0" y="0" width="%s" height="%s"/>' % (backdrop, w, h)
+          if backdrop else
+          '<rect x="0" y="0" width="%s" height="%s" fill="#8f93a0"/>' % (w, h))
+
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<svg xmlns="http://www.w3.org/2000/svg" width="%(w)spx" height="%(h)spx" '
+        'viewBox="0 0 %(w)s %(h)s" role="img" aria-label="%(k)s">'
+        '<title>%(k)s</title>'
+        '<defs><clipPath id="c"><rect x="%(x)s" y="0" width="%(rw)s" '
+        'height="%(h)s" rx="%(r)s"/></clipPath>'
+        '<linearGradient id="sh" x1="0" y1="0" x2="0" y2="1">'
+        '<stop offset="0%%" stop-color="#ffffff" stop-opacity="%(s1)s"/>'
+        '<stop offset="46%%" stop-color="#ffffff" stop-opacity="0"/>'
+        '<stop offset="88%%" stop-color="#ffffff" stop-opacity="0"/>'
+        '<stop offset="100%%" stop-color="#ffffff" stop-opacity="%(s2)s"/>'
+        '</linearGradient>'
+        '<filter id="is" x="-30%%" y="-30%%" width="160%%" height="170%%">'
+        '<feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#000000" '
+        'flood-opacity=".34"/></filter></defs>'
+        '<g clip-path="url(#c)">'
+        '%(bg)s'
+        '<rect x="%(x)s" y="0" width="%(rw)s" height="%(h)s" fill="%(g)s" '
+        'fill-opacity="%(go)s"/>'
+        '<rect x="%(x)s" y="0" width="%(rw)s" height="%(h)s" fill="url(#sh)"/>'
+        '<rect x="%(x).1f" y="0.5" width="%(rw)s" height="%(h1).1f" rx="%(r)s" '
+        'fill="none" stroke="#ffffff" stroke-opacity="%(rim)s"/>'
+        '<path d="M %(hx).1f 1.2 H %(hx2).1f" stroke="#ffffff" '
+        'stroke-opacity="%(rim2).2f" stroke-width="1.4"/>'
+        '</g>'
+        '<g filter="url(#is)">%(icon)s</g>'
+        "</svg>"
+        % {
+            "w": w, "h": h, "h1": h - 1, "r": r, "x": x, "rw": rw, "k": key,
+            "bg": bg, "g": wp["glass"], "go": wp["glass_opacity"],
+            "s1": wp["sheen_top"], "s2": wp["sheen_bottom"], "rim": wp["rim"],
+            "rim2": min(1.0, wp["rim"] + 0.34),
+            "hx": (r * 0.72) if first else 0,
+            "hx2": (w - r * 0.72) if last else w,
+            "icon": dock_tile(key, icon_x, icon_y, STRIP_ICON, "s%d" % index),
+        }
+    )
+
+
+def icon_file(key, size=128):
+    """One dock icon on its own, transparent, for use outside the strip."""
     pad = size * 0.08
     inner = size - pad * 2
     tile = dock_tile(key, pad, pad, inner, "ic" + key)
@@ -1027,11 +1146,16 @@ def icon_file(key, size=128):
 def write_all(live, portrait, build_date):
     """Render every desktop element for the mac themes. Returns file paths."""
     written = []
-    for key, _label in DOCK_APPS:
-        name = "icon_%s.svg" % key
-        with open(name, "w", encoding="utf-8", newline=chr(10)) as handle:
-            handle.write(icon_file(key))
-        written.append(name)
+    wp = WALLPAPER["light"]
+    slices = _strip_backdrop_slices()
+    for i, (key, _label) in enumerate(DOCK_APPS):
+        for name, svg in (
+            ("icon_%s.svg" % key, icon_file(key)),
+            ("dock%d_%s.svg" % (i, key), strip_segment(i, key, slices[i], wp)),
+        ):
+            with open(name, "w", encoding="utf-8", newline=chr(10)) as handle:
+                handle.write(svg)
+            written.append(name)
 
     for theme in (themes.DARK, themes.LIGHT):
         suffix = theme["name"]
