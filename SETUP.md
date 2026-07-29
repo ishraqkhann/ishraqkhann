@@ -219,11 +219,34 @@ it keeps the *legacy* `align` attribute, which maps straight onto
 So the dock now sits flush against the desktop and its frosted glass continues
 the wallpaper. If you ever strip those attributes out, the seam comes back.
 
-**The white either side of the dock** is the page, and it stays. A full-bleed
-strip is possible — `width="20%"` survives the sanitiser, and five of them
-always total exactly the container width — but the glass bar would then have to
-span the full width to keep each icon inside its own click region, which is a
-taskbar, not a dock.
+**The row is full-bleed.** Seven images — a wallpaper filler, the five dock
+segments, another filler — sized in percentages that sum to 100:
+
+    33%  +  6.8% x 5  +  33%  =  100%
+
+Percentage widths survive the sanitiser, and because every image scales with the
+container their heights stay in proportion, so the row spans the full width and
+never wraps. Checked at 380px, 880px and 1012px.
+
+For the heights to *match* rather than merely scale together, the filler's
+native aspect has to be `(33/6.8) x (76/92) = 4.009`, which at 92px tall makes
+it 369 wide. Change either percentage and that has to be recomputed or the row
+goes ragged.
+
+**Making the seam actually invisible took three fixes**, none of which were the
+obvious one:
+
+1. The filler has to crop the wallpaper starting at the exact row the hero
+   stops on. Cropping "somewhere near the bottom" steps visibly.
+2. There has to *be* enough wallpaper below that row. The hero is 796 tall and
+   the filler needs 109 more rows at hero scale, so the stored wallpaper is
+   1318 x 905 and the hero anchors to the top of it with
+   `preserveAspectRatio="xMidYMin slice"`. Centred (`xMidYMid`) splits the
+   spare height above and below and the filler only gets half of what it needs
+   — it was stretching 37 rows to fill 109, which is why the gradient ran at
+   the wrong rate.
+3. The desktop lays a veil over its wallpaper. The filler needs the same veil,
+   or it shows the identical pixels at a different tint.
 
 **Size.** The segments are 76 × 92 each, so the bar is 380px at native size.
 The README scales it to 297px with `height="72"`, which is the one that sits

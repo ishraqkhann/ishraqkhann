@@ -915,7 +915,7 @@ def desktop(theme, live, portrait, build_date, clock=None):
     if photo:
         wall_body = (
             '<image href="%s" x="0" y="0" width="%s" height="%s" '
-            'preserveAspectRatio="xMidYMid slice"/>'
+            'preserveAspectRatio="xMidYMin slice"/>'
             '<rect width="%s" height="%s" fill="%s" fill-opacity="%s"/>'
             % (photo, w, h, w, h, wp["veil"], wp["veil_opacity"])
         )
@@ -1123,6 +1123,103 @@ def strip_segment(index, key, backdrop, wp):
     )
 
 
+# Wallpaper fillers for either side of the dock.
+#
+# The dock is narrower than the hero, so page-white showed to its left and
+# right. These two images fill that, carrying the wallpaper on from the bottom
+# edge of the desktop.
+#
+# Everything in the row is sized in PERCENTAGES, which is what makes it hold up:
+#
+#     filler 33%  +  5 segments x 6.8%  +  filler 33%  =  100%
+#
+# Percentage widths survive GitHub's sanitiser, and because every image scales
+# with the container their heights stay in proportion at every viewport - so
+# the row never wraps and never steps. For the heights to *match*, the filler's
+# native aspect has to be (33/6.8) x (76/92) = 4.009, which at 92px tall makes
+# it 369 wide. That number is not arbitrary; change either percentage and it
+# has to be recomputed or the row goes ragged.
+
+FILLER_W, FILLER_H = 369, 92
+FILLER_PCT, SEG_PCT = 33.0, 6.8
+
+
+def _edge_filler(side, hero_h):
+    """
+    A crop of the wallpaper for one end of the dock row.
+
+    The crop has to start at exactly the row of the wallpaper the hero stops
+    on, or the two do not line up and a tonal step shows across the seam. The
+    hero paints the wallpaper with preserveAspectRatio="xMidYMid slice", so
+    work back through that: scale to cover, centre, and the canvas' bottom edge
+    lands at `hero_bottom` in wallpaper pixels.
+    """
+    try:
+        from PIL import Image
+    except ImportError:
+        return None
+
+    src = None
+    for ext in ("webp", "png", "jpg", "jpeg"):
+        path = os.path.join("assets", "wallpaper." + ext)
+        if os.path.exists(path):
+            src = path
+            break
+    if src is None:
+        return None
+
+    img = Image.open(src).convert("RGB")
+    hero_w = themes.CARD_W + 168      # the desktop canvas width
+
+    # Undo the slice. The hero anchors to the top (xMidYMin), so the canvas'
+    # bottom edge maps straight onto wallpaper row hero_h / scale - no centring
+    # offset to unpick, and every row beneath it is the filler's.
+    scale = max(hero_w / img.width, hero_h / img.height)
+    rw = img.width * scale
+    hero_bottom = hero_h / scale
+    x_off = (hero_w - rw) / 2.0
+
+    frac = FILLER_PCT / 100.0
+    if side == "left":
+        x0, x1 = 0.0, hero_w * frac
+    else:
+        x0, x1 = hero_w * (1.0 - frac), float(hero_w)
+    wx0 = max(0, int(round((x0 - x_off) / scale)))
+    wx1 = min(img.width, int(round((x1 - x_off) / scale)))
+
+    wy0 = max(0, min(img.height - 2, int(round(hero_bottom))))
+    wy1 = img.height
+    if wy1 - wy0 < 4:                     # almost nothing left below the seam
+        wy0 = max(0, img.height - 8)
+
+    crop = img.crop((wx0, wy0, wx1, wy1)).resize(
+        (FILLER_W, FILLER_H), Image.LANCZOS)
+
+    buf = io.BytesIO()
+    crop.save(buf, "WEBP", quality=90, method=6)
+    return "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
+
+
+def filler_file(side, hero_h, wp=None):
+    uri = _edge_filler(side, hero_h)
+    wp = wp or WALLPAPER["light"]
+    body = (
+        '<image href="%s" x="0" y="0" width="%s" height="%s"/>' % (uri, FILLER_W, FILLER_H)
+        if uri else
+        '<rect width="%s" height="%s" fill="#9aa0ad"/>' % (FILLER_W, FILLER_H)
+    )
+    # The desktop lays a veil over its wallpaper; without the same veil here the
+    # filler shows the identical pixels at a different tint and the seam steps.
+    body += ('<rect width="%s" height="%s" fill="%s" fill-opacity="%s"/>'
+             % (FILLER_W, FILLER_H, wp["veil"], wp["veil_opacity"]))
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<svg xmlns="http://www.w3.org/2000/svg" width="%(w)spx" height="%(h)spx" '
+        'viewBox="0 0 %(w)s %(h)s" role="presentation" aria-hidden="true">'
+        "%(body)s</svg>" % {"w": FILLER_W, "h": FILLER_H, "body": body}
+    )
+
+
 def icon_file(key, size=128):
     """One dock icon on its own, transparent, for use outside the strip."""
     pad = size * 0.08
@@ -1148,6 +1245,14 @@ def write_all(live, portrait, build_date):
     written = []
     wp = WALLPAPER["light"]
     slices = _strip_backdrop_slices()
+    # Same arithmetic desktop() uses, so the fillers know where the hero stops.
+    _cw, _ch, _bf = render.terminal_parts(themes.LIGHT, live, portrait)
+    hero_h = 26 + 58 + _ch + 30
+    for side in ("left", "right"):
+        name = "dock_edge_%s.svg" % side
+        with open(name, "w", encoding="utf-8", newline=chr(10)) as handle:
+            handle.write(filler_file(side, hero_h))
+        written.append(name)
     for i, (key, _label) in enumerate(DOCK_APPS):
         for name, svg in (
             ("icon_%s.svg" % key, icon_file(key)),
