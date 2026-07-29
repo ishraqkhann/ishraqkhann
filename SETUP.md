@@ -233,8 +233,8 @@ native aspect has to be `(33/6.8) x (76/92) = 4.009`, which at 92px tall makes
 it 369 wide. Change either percentage and that has to be recomputed or the row
 goes ragged.
 
-**Making the seam actually invisible took three fixes**, none of which were the
-obvious one:
+**Making the seam actually invisible took four fixes**, and the one that
+mattered most was not about the wallpaper at all:
 
 1. The filler has to crop the wallpaper starting at the exact row the hero
    stops on. Cropping "somewhere near the bottom" steps visibly.
@@ -247,6 +247,17 @@ obvious one:
    the wrong rate.
 3. The desktop lays a veil over its wallpaper. The filler needs the same veil,
    or it shows the identical pixels at a different tint.
+4. **The window's drop shadow.** With all of the above correct the seam still
+   stepped by ~27, and the wallpaper was not the cause — the source rows either
+   side of the boundary differed by 2. The hero's bottom band was sitting inside
+   the terminal window's shadow, so the desktop there was rendered dark while
+   the filler below showed the same wallpaper unshadowed. The shadow is now
+   `dy=12 stdDeviation=16` instead of `dy=22/30`, and the floor under the window
+   is 64px rather than 30, which is enough for it to decay to nothing before the
+   edge. Seam delta went from max 32 / mean 22.5 to **max 6 / mean 1.4**.
+
+Change the shadow or the floor height and that budget has to be rechecked; if
+the shadow is still dense at row `hero_h` the step comes straight back.
 
 **Size.** The segments are 76 × 92 each, so the bar is 380px at native size.
 The README scales it to 297px with `height="72"`, which is the one that sits

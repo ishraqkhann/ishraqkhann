@@ -909,7 +909,10 @@ def desktop(theme, live, portrait, build_date, clock=None):
     # be clicked, because GitHub renders this file as an <img>. Two docks, one
     # of them dead, looked exactly like the mistake it was. The window now just
     # sits on the desktop with some wallpaper showing below it.
-    h = win_y + card_h + 30
+    # Enough floor below the window for its shadow to fade out completely.
+    # If the shadow is still dense at the bottom edge, the fillers below
+    # show the same wallpaper unshadowed and the seam steps.
+    h = win_y + card_h + 64
 
     photo, _bytes = wallpaper_image()
     if photo:
@@ -977,8 +980,8 @@ def desktop(theme, live, portrait, build_date, clock=None):
         '<filter id="glassblur" x="-50%%" y="-50%%" width="200%%" height="200%%">'
         '<feGaussianBlur stdDeviation="22"/></filter>'
         '<filter id="drop" x="-25%%" y="-25%%" width="150%%" height="150%%">'
-        '<feDropShadow dx="0" dy="22" stdDeviation="30" flood-color="#000000" '
-        'flood-opacity=".42"/></filter>'
+        '<feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" '
+        'flood-opacity=".40"/></filter>'
         "</defs>\n"
         "%(paint)s\n%(menu)s\n"
         '<g id="win">\n%(term)s\n'
@@ -1016,80 +1019,125 @@ STRIP_H = 92
 STRIP_ICON = 56
 STRIP_R = 24
 
+# The two wallpaper fillers that cap the row.
+#
+# Everything in the row is sized in PERCENTAGES, which is what makes it hold up:
+#
+#     filler 33%  +  5 segments x 6.8%  +  filler 33%  =  100%
+#
+# Percentage widths survive GitHub's sanitiser, and because every image scales
+# with the container their heights stay in proportion - so the row spans the
+# full width, never wraps and never steps, at any viewport. For the heights to
+# *match* rather than merely scale together, the filler's native aspect has to
+# be (33/6.8) x (76/92) = 4.009, which at 92px tall makes it 369 wide. Change
+# either percentage and that has to be recomputed.
 
-def _strip_backdrop_slices():
+FILLER_W, FILLER_H = 369, 92
+FILLER_PCT, SEG_PCT = 33.0, 6.8
+
+
+def _wallpaper_path():
+    for ext in ("webp", "png", "jpg", "jpeg"):
+        path = os.path.join("assets", "wallpaper." + ext)
+        if os.path.exists(path):
+            return path
+    return None
+
+
+def _strip_backdrop_slices(hero_h):
     """
-    Slice a blurred crop of the wallpaper into five, one per segment.
+    Five (sharp, blurred) pairs, cut from the band of wallpaper that sits
+    directly under the hero.
 
-    Blurred here in Pillow rather than with an SVG filter: the crop is tiny, a
-    baked blur costs nothing at render time, and it guarantees every slice is
-    blurred identically. An feGaussianBlur per file would sample each slice
-    separately and band at the joins.
+    Both come from the *same* crop as the edge fillers, so the whole row - two
+    fillers and five segments - is one continuous piece of wallpaper. The sharp
+    copy is the desktop the dock sits on; the blurred copy is what shows through
+    the glass.
+
+    Blurred before slicing, never after: an feGaussianBlur inside each segment
+    would sample only that segment and band at the joins.
     """
     try:
         from PIL import Image, ImageFilter
     except ImportError:
-        return [None] * len(DOCK_APPS)
+        return [(None, None)] * len(DOCK_APPS)
 
-    src = None
-    for ext in ("webp", "png", "jpg", "jpeg"):
-        path = os.path.join("assets", "wallpaper." + ext)
-        if os.path.exists(path):
-            src = path
-            break
+    src = _wallpaper_path()
     if src is None:
-        return [None] * len(DOCK_APPS)
+        return [(None, None)] * len(DOCK_APPS)
 
     n = len(DOCK_APPS)
-    total_w = STRIP_SEG_W * n
     img = Image.open(src).convert("RGB")
+    hero_w = themes.CARD_W + 168
 
-    # Take the band from just under where the Terminal window sits, so the
-    # glass is showing roughly the part of the wallpaper it would if the dock
-    # were still drawn into the desktop.
-    band_h = int(img.height * 0.11)
-    top = int(img.height * 0.80)
-    left = (img.width - int(img.width * 0.30)) // 2
-    crop = img.crop((left, top, left + int(img.width * 0.30), top + band_h))
-    crop = crop.resize((total_w * 3, STRIP_H * 3), Image.LANCZOS)
-    crop = crop.filter(ImageFilter.GaussianBlur(radius=26))
-    crop = crop.resize((total_w, STRIP_H), Image.LANCZOS)
+    scale = max(hero_w / img.width, hero_h / img.height)
+    x_off = (hero_w - img.width * scale) / 2.0
+
+    # The dock occupies the middle band between the two fillers.
+    x0 = hero_w * FILLER_PCT / 100.0
+    x1 = hero_w * (1.0 - FILLER_PCT / 100.0)
+    wx0 = max(0, int(round((x0 - x_off) / scale)))
+    wx1 = min(img.width, int(round((x1 - x_off) / scale)))
+    wy0 = max(0, min(img.height - 2, int(round(hero_h / scale))))
+
+    band = img.crop((wx0, wy0, wx1, img.height))
+    total_w = STRIP_SEG_W * n
+    sharp = band.resize((total_w, STRIP_H), Image.LANCZOS)
+    blurred = (band.resize((total_w * 3, STRIP_H * 3), Image.LANCZOS)
+                   .filter(ImageFilter.GaussianBlur(radius=24))
+                   .resize((total_w, STRIP_H), Image.LANCZOS))
+
+    def encode(im):
+        buf = io.BytesIO()
+        im.save(buf, "WEBP", lossless=True, method=6)
+        return "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
 
     out = []
     for i in range(n):
-        seg = crop.crop((i * STRIP_SEG_W, 0, (i + 1) * STRIP_SEG_W, STRIP_H))
-        buf = io.BytesIO()
-        seg.save(buf, "WEBP", quality=90, method=6)
-        out.append("data:image/webp;base64,"
-                   + base64.b64encode(buf.getvalue()).decode("ascii"))
+        box = (i * STRIP_SEG_W, 0, (i + 1) * STRIP_SEG_W, STRIP_H)
+        out.append((encode(sharp.crop(box)), encode(blurred.crop(box))))
     return out
 
 
 def strip_segment(index, key, backdrop, wp):
-    """One slice of the dock. Rounded only on the outer edge of the end pieces."""
+    """
+    One slice of the dock row: a piece of desktop with part of the dock on it.
+
+    The bar is inset vertically so wallpaper shows above and below it — that is
+    what makes the dock read as floating on the desktop rather than as a band
+    welded to it, and it is what fills the corners that used to show page-white
+    around the rounded ends.
+    """
     n = len(DOCK_APPS)
     w, h, r = STRIP_SEG_W, STRIP_H, STRIP_R
     first, last = index == 0, index == n - 1
+    sharp, blurred = backdrop if isinstance(backdrop, tuple) else (None, None)
 
-    # Draw a rect that is wider than the slice and let the viewBox crop it, so
-    # only the outer corners of the end pieces are ever rounded.
+    bar_y, bar_h = 7, h - 18            # inset, so desktop shows top and bottom
+
+    # Overhang the bar past the slice edges and let the viewBox crop it, so only
+    # the outer corners of the two end pieces are ever rounded.
     x = 0 if first else -r - 2
     rw = w + (0 if first else r + 2) + (0 if last else r + 2)
 
-    icon_x = (w - STRIP_ICON) / 2
-    icon_y = (h - STRIP_ICON) / 2
+    icon = STRIP_ICON
+    icon_x = (w - icon) / 2.0
+    icon_y = bar_y + (bar_h - icon) / 2.0
 
-    bg = ('<image href="%s" x="0" y="0" width="%s" height="%s"/>' % (backdrop, w, h)
-          if backdrop else
-          '<rect x="0" y="0" width="%s" height="%s" fill="#8f93a0"/>' % (w, h))
+    bg = ('<image href="%s" x="0" y="0" width="%s" height="%s"/>' % (sharp, w, h)
+          if sharp else
+          '<rect width="%s" height="%s" fill="#9aa0ad"/>' % (w, h))
+    glassbg = ('<image href="%s" x="0" y="0" width="%s" height="%s"/>' % (blurred, w, h)
+               if blurred else
+               '<rect width="%s" height="%s" fill="#8f93a0"/>' % (w, h))
 
     return (
         '<?xml version="1.0" encoding="UTF-8"?>'
         '<svg xmlns="http://www.w3.org/2000/svg" width="%(w)spx" height="%(h)spx" '
         'viewBox="0 0 %(w)s %(h)s" role="img" aria-label="%(k)s">'
         '<title>%(k)s</title>'
-        '<defs><clipPath id="c"><rect x="%(x)s" y="0" width="%(rw)s" '
-        'height="%(h)s" rx="%(r)s"/></clipPath>'
+        '<defs><clipPath id="c"><rect x="%(x)s" y="%(by)s" width="%(rw)s" '
+        'height="%(bh)s" rx="%(r)s"/></clipPath>'
         '<linearGradient id="sh" x1="0" y1="0" x2="0" y2="1">'
         '<stop offset="0%%" stop-color="#ffffff" stop-opacity="%(s1)s"/>'
         '<stop offset="46%%" stop-color="#ffffff" stop-opacity="0"/>'
@@ -1099,49 +1147,36 @@ def strip_segment(index, key, backdrop, wp):
         '<filter id="is" x="-30%%" y="-30%%" width="160%%" height="170%%">'
         '<feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#000000" '
         'flood-opacity=".34"/></filter></defs>'
-        '<g clip-path="url(#c)">'
+        # the desktop this slice sits on
         '%(bg)s'
-        '<rect x="%(x)s" y="0" width="%(rw)s" height="%(h)s" fill="%(g)s" '
+        '<rect width="%(w)s" height="%(h)s" fill="%(veil)s" fill-opacity="%(vo)s"/>'
+        # the glass
+        '<g clip-path="url(#c)">'
+        '%(glassbg)s'
+        '<rect x="%(x)s" y="%(by)s" width="%(rw)s" height="%(bh)s" fill="%(g)s" '
         'fill-opacity="%(go)s"/>'
-        '<rect x="%(x)s" y="0" width="%(rw)s" height="%(h)s" fill="url(#sh)"/>'
-        '<rect x="%(x).1f" y="0.5" width="%(rw)s" height="%(h1).1f" rx="%(r)s" '
-        'fill="none" stroke="#ffffff" stroke-opacity="%(rim)s"/>'
-        '<path d="M %(hx).1f 1.2 H %(hx2).1f" stroke="#ffffff" '
+        '<rect x="%(x)s" y="%(by)s" width="%(rw)s" height="%(bh)s" fill="url(#sh)"/>'
+        '<rect x="%(x).1f" y="%(by1).1f" width="%(rw)s" height="%(bh1).1f" '
+        'rx="%(r)s" fill="none" stroke="#ffffff" stroke-opacity="%(rim)s"/>'
+        '<path d="M %(hx).1f %(hy).1f H %(hx2).1f" stroke="#ffffff" '
         'stroke-opacity="%(rim2).2f" stroke-width="1.4"/>'
         '</g>'
         '<g filter="url(#is)">%(icon)s</g>'
         "</svg>"
         % {
-            "w": w, "h": h, "h1": h - 1, "r": r, "x": x, "rw": rw, "k": key,
-            "bg": bg, "g": wp["glass"], "go": wp["glass_opacity"],
+            "w": w, "h": h, "r": r, "x": x, "rw": rw, "k": key,
+            "by": bar_y, "bh": bar_h, "by1": bar_y + 0.5, "bh1": bar_h - 1,
+            "bg": bg, "glassbg": glassbg,
+            "veil": wp["veil"], "vo": wp["veil_opacity"],
+            "g": wp["glass"], "go": wp["glass_opacity"],
             "s1": wp["sheen_top"], "s2": wp["sheen_bottom"], "rim": wp["rim"],
             "rim2": min(1.0, wp["rim"] + 0.34),
             "hx": (r * 0.72) if first else 0,
             "hx2": (w - r * 0.72) if last else w,
-            "icon": dock_tile(key, icon_x, icon_y, STRIP_ICON, "s%d" % index),
+            "hy": bar_y + 1.2,
+            "icon": dock_tile(key, icon_x, icon_y, icon, "s%d" % index),
         }
     )
-
-
-# Wallpaper fillers for either side of the dock.
-#
-# The dock is narrower than the hero, so page-white showed to its left and
-# right. These two images fill that, carrying the wallpaper on from the bottom
-# edge of the desktop.
-#
-# Everything in the row is sized in PERCENTAGES, which is what makes it hold up:
-#
-#     filler 33%  +  5 segments x 6.8%  +  filler 33%  =  100%
-#
-# Percentage widths survive GitHub's sanitiser, and because every image scales
-# with the container their heights stay in proportion at every viewport - so
-# the row never wraps and never steps. For the heights to *match*, the filler's
-# native aspect has to be (33/6.8) x (76/92) = 4.009, which at 92px tall makes
-# it 369 wide. That number is not arbitrary; change either percentage and it
-# has to be recomputed or the row goes ragged.
-
-FILLER_W, FILLER_H = 369, 92
-FILLER_PCT, SEG_PCT = 33.0, 6.8
 
 
 def _edge_filler(side, hero_h):
@@ -1196,7 +1231,7 @@ def _edge_filler(side, hero_h):
         (FILLER_W, FILLER_H), Image.LANCZOS)
 
     buf = io.BytesIO()
-    crop.save(buf, "WEBP", quality=90, method=6)
+    crop.save(buf, "WEBP", lossless=True, method=6)
     return "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
 
 
@@ -1244,10 +1279,11 @@ def write_all(live, portrait, build_date):
     """Render every desktop element for the mac themes. Returns file paths."""
     written = []
     wp = WALLPAPER["light"]
-    slices = _strip_backdrop_slices()
-    # Same arithmetic desktop() uses, so the fillers know where the hero stops.
+
+    # Same arithmetic desktop() uses, so the row knows where the hero stops.
     _cw, _ch, _bf = render.terminal_parts(themes.LIGHT, live, portrait)
-    hero_h = 26 + 58 + _ch + 30
+    hero_h = 26 + 58 + _ch + 64
+    slices = _strip_backdrop_slices(hero_h)
     for side in ("left", "right"):
         name = "dock_edge_%s.svg" % side
         with open(name, "w", encoding="utf-8", newline=chr(10)) as handle:
