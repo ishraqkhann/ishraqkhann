@@ -205,13 +205,25 @@ inline elements renders as a space. Flush tags join perfectly. If you ever
 reformat `README.md` and something "prettifies" that line onto several lines,
 the dock will break into five tiles — that is the cause.
 
-**The 6px gap.** There is a 6 pixel white line between the hero and the dock,
-and it cannot be closed. It is the descender space under an inline image — the
-line box reserves room below the baseline whether or not anything sits there.
-Measured both ways: removing every scrap of whitespace between the tags changes
-nothing, because the gap is not whitespace. Closing it needs
-`vertical-align: bottom` or `display: block`, and GitHub strips `style` and
-`class` off everything. Six pixels is the floor for stacked images in Markdown.
+**`align="top"` is load-bearing.** Without it a 6px white line opens between the
+desktop and the dock, and the dock stops looking attached to anything.
+
+That gap is descender space: an inline image sits on the text baseline, and the
+line box reserves room underneath it whether or not a glyph is there. It is not
+whitespace — removing every space between the tags does not change it. The fix
+is `vertical-align`, and GitHub strips `style` and `class` off everything…  but
+it keeps the *legacy* `align` attribute, which maps straight onto
+`vertical-align`. Measured across four variants: baseline 6px, `align="top"`,
+`align="middle"` and `align="absbottom"` all 0px.
+
+So the dock now sits flush against the desktop and its frosted glass continues
+the wallpaper. If you ever strip those attributes out, the seam comes back.
+
+**The white either side of the dock** is the page, and it stays. A full-bleed
+strip is possible — `width="20%"` survives the sanitiser, and five of them
+always total exactly the container width — but the glass bar would then have to
+span the full width to keep each icon inside its own click region, which is a
+taskbar, not a dock.
 
 **Size.** The segments are 76 × 92 each, so the bar is 380px at native size.
 The README scales it to 297px with `height="72"`, which is the one that sits

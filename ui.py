@@ -909,7 +909,7 @@ def desktop(theme, live, portrait, build_date, clock=None):
     # be clicked, because GitHub renders this file as an <img>. Two docks, one
     # of them dead, looked exactly like the mistake it was. The window now just
     # sits on the desktop with some wallpaper showing below it.
-    h = win_y + card_h + 64
+    h = win_y + card_h + 30
 
     photo, _bytes = wallpaper_image()
     if photo:

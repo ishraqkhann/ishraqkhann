@@ -16,10 +16,15 @@
   height=72 scales the bar to 297px. Native size (380px) reads oversized next
   to the window; 244px matches the dock's old in-image width but loses the icon
   detail. All three join seamlessly - this is proportion, not a constraint.
+
+  align="top" is load-bearing. Without it an inline image reserves descender
+  space beneath itself and a 6px white line opens between the desktop and the
+  dock. GitHub strips style and class, but the legacy align attribute survives
+  and maps to vertical-align, which is what closes it. Measured: 6px -> 0px.
 -->
 
 <p align="center">
-  <a href="https://ishraqkhan.com"><img alt="Ishraq Khan — founder and CEO of Kodezi. A macOS desktop with a terminal open, showing origin, role, languages and live GitHub statistics." src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/desktop_light.svg"></a>
-  <a href="https://ishraqkhan.com" title="ishraqkhan.com"><img src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock0_globe.svg" alt="Website" height="72"></a><a href="https://kodezi.com" title="kodezi.com"><img src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock1_kodezi.svg" alt="Kodezi" height="72"></a><a href="mailto:ishraq@kodezi.com" title="ishraq@kodezi.com"><img src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock2_email.svg" alt="Email" height="72"></a><a href="https://www.linkedin.com/in/ishraqkhann/" title="LinkedIn"><img src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock3_linkedin.svg" alt="LinkedIn" height="72"></a><a href="https://x.com/ishraqkhann" title="@ishraqkhann"><img src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock4_x.svg" alt="X" height="72"></a>
+  <a href="https://ishraqkhan.com"><img align="top" alt="Ishraq Khan — founder and CEO of Kodezi. A macOS desktop with a terminal open, showing origin, role, languages and live GitHub statistics." src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/desktop_light.svg"></a>
+  <a href="https://ishraqkhan.com" title="ishraqkhan.com"><img align="top" src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock0_globe.svg" alt="Website" height="72"></a><a href="https://kodezi.com" title="kodezi.com"><img align="top" src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock1_kodezi.svg" alt="Kodezi" height="72"></a><a href="mailto:ishraq@kodezi.com" title="ishraq@kodezi.com"><img align="top" src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock2_email.svg" alt="Email" height="72"></a><a href="https://www.linkedin.com/in/ishraqkhann/" title="LinkedIn"><img align="top" src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock3_linkedin.svg" alt="LinkedIn" height="72"></a><a href="https://x.com/ishraqkhann" title="@ishraqkhann"><img align="top" src="https://raw.githubusercontent.com/ishraqkhann/ishraqkhann/main/dock4_x.svg" alt="X" height="72"></a>
 </p>
 
