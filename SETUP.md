@@ -20,16 +20,20 @@ cache/<sha256>.txt        per-repo lines-of-code cache
 cache/stats.json          last successful fetch, used as a fallback
 ```
 
-Fifteen SVGs come out of it. The one that matters is `desktop_dark.svg` /
-`desktop_light.svg`: a whole macOS desktop in a single image — wallpaper, menu
-bar, the Terminal window sitting open on it, and the Dock. That is the README's
-hero.
+The one that matters is `desktop_dark.svg` / `desktop_light.svg`: a whole macOS
+desktop in a single image — wallpaper, menu bar, the Terminal window sitting
+open on it, and the Dock. That is the README's hero, and currently the only
+window it shows.
 
-The rest are standalone windows the README opens underneath it — About This Mac,
-Kodezi, Notes, plus XP mode. Each has its own working close button.
+`about_*.svg`, `kodezi_*.svg` and `notes_*.svg` are still generated but are not
+referenced by the README right now. Each is a standalone window with its own
+working close button. To bring one back, wrap it in a `<details>` block —
+`<details>` is the only interactivity GitHub permits, and it survives the
+sanitiser.
 
-`<details>` is the only interactivity GitHub permits, so that is what opens and
-closes those windows there.
+**XP mode has been retired.** The theme dict is still in `themes.py`; it is just
+no longer in `THEMES`, so nothing renders it. Put `XP` back in that list to
+revive it.
 
 ---
 

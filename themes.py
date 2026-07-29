@@ -196,4 +196,5 @@ XP = {
 }
 
 
-THEMES = [DARK, LIGHT, XP]
+# XP mode retired. The theme dict is kept - re-add it here to bring it back.
+THEMES = [DARK, LIGHT]

@@ -1034,7 +1034,6 @@ def write_all(live, portrait, build_date):
         suffix = theme["name"]
         pieces = {
             f"desktop_{suffix}.svg": desktop(theme, live, portrait, build_date),
-            f"menubar_{suffix}.svg": menubar(theme, build_date),
             f"about_{suffix}.svg": about(theme, live, portrait),
             f"kodezi_{suffix}.svg": kodezi(theme, live),
             f"notes_{suffix}.svg": notes(theme, build_date),
