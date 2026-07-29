@@ -1,0 +1,53 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>desktop preview</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin:0; padding:26px 0 60px; background:#0d1117; color:#8b949e;
+         font:13px ui-monospace,SFMono-Regular,Consolas,monospace; }
+  .col { width:1190px; max-width:96vw; margin:0 auto; }
+  h3 { color:#c9d1d9; font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+       margin:34px 0 10px; font-weight:600; }
+  img, object { display:block; width:100%; height:auto; margin:0 0 6px; }
+  .note { margin:0 0 18px; font-size:12px; color:#6e7681; }
+  .light { background:#fff; padding:14px; border-radius:12px; margin-bottom:18px; }
+</style>
+<div class="col">
+
+  <h3>menu bar</h3>
+  <img src="menubar_dark.svg" alt="">
+
+  <h3>terminal &mdash; live document, everything works</h3>
+  <object type="image/svg+xml" data="dark_mode.svg"></object>
+  <p class="note">Hover the portrait. Hover a contact link. Click the red button.</p>
+
+  <h3>terminal &mdash; as an img, which is what GitHub renders</h3>
+  <img src="dark_mode.svg" alt="">
+  <p class="note">Ambient sweep and cursor still run. Hover, links and the close
+     button are inert here &mdash; that is the platform, not a bug.</p>
+
+  <h3>about this mac</h3>
+  <object type="image/svg+xml" data="about_dark.svg"></object>
+
+  <h3>kodezi</h3>
+  <object type="image/svg+xml" data="kodezi_dark.svg"></object>
+
+  <h3>notes</h3>
+  <object type="image/svg+xml" data="notes_dark.svg"></object>
+
+  <h3>dock</h3>
+  <object type="image/svg+xml" data="dock_dark.svg"></object>
+  <p class="note">Icons lift on hover and link out.</p>
+
+  <h3>light theme</h3>
+  <div class="light">
+    <img src="menubar_light.svg" alt="">
+    <img src="light_mode.svg" alt="">
+    <img src="about_light.svg" alt="">
+    <img src="dock_light.svg" alt="">
+  </div>
+
+  <h3>xp mode</h3>
+  <object type="image/svg+xml" data="xp_mode.svg"></object>
+
+</div>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900px" height="486px"
+     viewBox="0 0 900 486" font-family="ConsolasFallback,Consolas,'DejaVu Sans Mono','Liberation Mono',Menlo,monospace"
+     font-size="16px" fill="#c9d1d9"
+     role="img" aria-label="Kodezi">
+<title>Kodezi</title>
+<style><![CDATA[
+    @font-face {
+      font-family: 'ConsolasFallback';
+      src: local('Consolas'), local('Consolas Bold');
+      font-display: swap;
+      size-adjust: 109%;
+    }
+    text, tspan { white-space: pre; }
+    .k  { fill: #ffa657; }
+    .kk { fill: #c9d1d9; }
+    .v  { fill: #a5d6ff; }
+    .a  { fill: #3fb950; }
+    .x  { fill: #f85149; }
+    .d  { fill: #616e7f; }
+    .r  { fill: #6e7681; }
+    .t  { fill: #ffa657; }
+    .bf { fill: #3fb950; }
+    .be { fill: #55606d; }
+
+    @keyframes boot { from { opacity: 0; } to { opacity: 1; } }
+    .ln { animation: boot .34s ease-out backwards; }
+    .px { animation: boot .3s ease-out backwards; }
+
+    @keyframes breathe {
+      0%, 100% { opacity: .88; }
+      50%      { opacity: 1; }
+    }
+    .portrait-base {
+      animation: breathe 7s ease-in-out infinite;
+      fill: #c9d1d9;
+    }
+
+    .portrait-glow {
+      fill: #58a6ff;
+      opacity: 0.55;
+    }
+
+    /* Density tiers. See DENSITY in render.py. */
+    .t0 { fill-opacity: 0.2; }
+    .t1 { fill-opacity: 0.46; }
+    .t2 { fill-opacity: 1; }
+
+    /* Hover: only reachable where the SVG is a live document, never in an
+       img tag. See the note on this function. */
+    .portrait { cursor: crosshair; }
+    .portrait .hit { fill: transparent; pointer-events: all; }
+    .portrait .portrait-base { transition: opacity .35s ease; }
+    .portrait .portrait-glow { transition: opacity .35s ease; }
+    .portrait .chroma { opacity: 0; transition: opacity .35s ease; }
+    .portrait:hover .portrait-base { animation: none; opacity: 1; }
+    .portrait:hover .portrait-glow { opacity: 1; }
+    .portrait:hover .chroma { opacity: .5; }
+    .portrait:hover .sweep-band { animation: none; }
+
+    /* Window buttons. The close button really does close the window - see
+       closed_panel() - but only where the SVG is a live document. */
+    .tl { cursor: pointer; }
+    .tlg { opacity: 0; transition: opacity .12s ease; }
+    .lights:hover .tlg { opacity: .62; }
+    #reopen { cursor: pointer; }
+
+    /* Links. Same story as hover: live wherever the SVG is a real document,
+       inert inside GitHub's img tag. */
+    .lnk { cursor: pointer; }
+    .lnk tspan { transition: fill .15s ease; }
+    .lnk:hover tspan { fill: #58a6ff; text-decoration: underline; }
+
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    .cursor { fill: #58a6ff; animation: blink 1.06s steps(1) infinite; }
+    ]]></style>
+<defs><filter id="drop" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.55"/></filter></defs>
+<g id="win">
+
+<defs>
+  <linearGradient id="macBar" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3d3d40"/>
+    <stop offset="100%" stop-color="#2b2b2e"/>
+  </linearGradient>
+</defs>
+<g filter="url(#drop)">
+  <rect x="20" y="20" width="860" height="446" rx="12" fill="#1e1e20"/>
+  <path d="M20 32 A12 12 0 0 1 32 20 H868 A12 12 0 0 1 880 32 V56 H20 Z" fill="url(#macBar)"/>
+  <path d="M20.5 32.5 A12 12 0 0 1 32.5 20.5 H867.5 A12 12 0 0 1 879.5 32.5 V56.5 H20.5 Z" fill="none"
+        stroke="#ffffff" stroke-opacity="0.09"/>
+  <line x1="20" y1="56" x2="880" y2="56"
+        stroke="#1c1c1e"/>
+  <g class="lights"><g id="btnClose" class="tl"><circle cx="40" cy="38.0" r="6" fill="#ff5f57" stroke="#e0443e" stroke-width="0.5"/><circle cx="40" cy="36.2" r="2.6" fill="#ffffff" fill-opacity=".22"/><g class="tlg" transform="translate(40,38.0)" stroke="#4a1010" stroke-width="1.3" stroke-linecap="round" fill="none"><path d="M-2.1 -2.1 L2.1 2.1 M2.1 -2.1 L-2.1 2.1"/></g><circle cx="40" cy="38.0" r="9" fill="transparent"/></g><g id="btnMin" class="tl"><circle cx="60" cy="38.0" r="6" fill="#febc2e" stroke="#d79b26" stroke-width="0.5"/><circle cx="60" cy="36.2" r="2.6" fill="#ffffff" fill-opacity=".22"/><g class="tlg" transform="translate(60,38.0)" stroke="#4a1010" stroke-width="1.3" stroke-linecap="round" fill="none"><path d="M-2.6 0 H2.6"/></g><circle cx="60" cy="38.0" r="9" fill="transparent"/></g><g id="btnZoom" class="tl"><circle cx="80" cy="38.0" r="6" fill="#28c840" stroke="#1dad2b" stroke-width="0.5"/><circle cx="80" cy="36.2" r="2.6" fill="#ffffff" fill-opacity=".22"/><g class="tlg" transform="translate(80,38.0)" stroke="#4a1010" stroke-width="1.3" stroke-linecap="round" fill="none"><path d="M0 -2.6 V2.6 M-2.6 0 H2.6"/></g><circle cx="80" cy="38.0" r="9" fill="transparent"/></g></g>
+  <text x="450.0" y="42.5" text-anchor="middle"
+        font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif"
+        font-size="13px" font-weight="600" fill="#a1a1a6"
+        >Kodezi</text>
+  <rect x="20.5" y="20.5" width="859" height="445" rx="12"
+        fill="none" stroke="#30363d" stroke-opacity=".6"/>
+</g>
+<defs><linearGradient id="kodeziIcon" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7b6cff"/><stop offset="100%" stop-color="#4b34d6"/></linearGradient></defs><rect x="64" y="96" width="84" height="84" rx="19.32" fill="url(#kodeziIcon)"/><rect x="64.5" y="96.5" width="83" height="83" rx="19.32" fill="none" stroke="#ffffff" stroke-opacity=".18"/><g transform="translate(106.0,138.0)"><text x="0" y="14" text-anchor="middle" font-size="46" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-weight="700">K</text></g>
+<text x="168" y="128" font-size="28px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#f5f5f7" font-weight="700">Kodezi</text>
+<text x="168" y="152" font-size="15px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#98989d" font-weight="500">The AI CTO for your codebase</text>
+<text x="168" y="176" font-size="13px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#0a84ff" font-weight="600">4,000,000+ developers</text>
+<line x1="64" y1="208" x2="836" y2="208" stroke="#38383a"/>
+<text x="64" y="238" font-size="16px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#f5f5f7" font-weight="600">It doesn't autocomplete.</text>
+<text x="64" y="268" font-size="15px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#0a84ff" font-weight="700">·</text>
+<text x="80" y="268" font-size="14px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#98989d" font-weight="400">Remembers — long-term project memory across the whole lifecycle.</text>
+<text x="64" y="293" font-size="15px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#0a84ff" font-weight="700">·</text>
+<text x="80" y="293" font-size="14px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#98989d" font-weight="400">Heals — finds and fixes bugs autonomously, then documents them.</text>
+<text x="64" y="318" font-size="15px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#0a84ff" font-weight="700">·</text>
+<text x="80" y="318" font-size="14px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#98989d" font-weight="400">Evolves — refines, optimises, enforces best practice as you go.</text>
+<text x="64" y="343" font-size="15px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#0a84ff" font-weight="700">·</text>
+<text x="80" y="343" font-size="14px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#98989d" font-weight="400">Governs — security, standards and drift, watched continuously.</text>
+<rect x="64" y="362" width="90.60000000000001" height="26" rx="13" fill="#2c2c2e" stroke="#38383a"/>
+<text x="109.30000000000001" y="380" font-size="12.5px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#f5f5f7" font-weight="500" text-anchor="middle">Kodezi OS</text>
+<rect x="164.60000000000002" y="362" width="46.2" height="26" rx="13" fill="#2c2c2e" stroke="#38383a"/>
+<text x="187.70000000000002" y="380" font-size="12.5px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#f5f5f7" font-weight="500" text-anchor="middle">CLI</text>
+<rect x="220.8" y="362" width="53.6" height="26" rx="13" fill="#2c2c2e" stroke="#38383a"/>
+<text x="247.60000000000002" y="380" font-size="12.5px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#f5f5f7" font-weight="500" text-anchor="middle">Code</text>
+<rect x="284.40000000000003" y="362" width="68.4" height="26" rx="13" fill="#2c2c2e" stroke="#38383a"/>
+<text x="318.6" y="380" font-size="12.5px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#f5f5f7" font-weight="500" text-anchor="middle">Create</text>
+<rect x="362.80000000000007" y="362" width="75.80000000000001" height="26" rx="13" fill="#2c2c2e" stroke="#38383a"/>
+<text x="400.70000000000005" y="380" font-size="12.5px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#f5f5f7" font-weight="500" text-anchor="middle">Chronos</text>
+<a class="lnk" href="https://kodezi.com" target="_blank" rel="noopener noreferrer"><rect x="64" y="408" width="150" height="30" rx="6" fill="#0a84ff"/><text x="139.0" y="427.5" font-size="13px" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" fill="#ffffff" font-weight="500" text-anchor="middle">Open kodezi.com</text></a>
+<set attributeName="display" to="none" begin="btnClose.click" fill="freeze"/>
+<set attributeName="display" to="inline" begin="reopen.click" fill="freeze"/>
+</g>
+<g id="closed" display="none">
+  <rect x="20" y="20" width="860" height="446" rx="12" fill="#161b22"
+        fill-opacity=".35" stroke="#616e7f" stroke-opacity=".5"
+        stroke-width="1.5" stroke-dasharray="8 6"/>
+  <text x="450.0" y="239.0" text-anchor="middle" font-size="15px"
+        fill="#616e7f">[ quit ]</text>
+  <text x="450.0" y="265.0" text-anchor="middle" font-size="13px"
+        fill="#616e7f" fill-opacity=".7">click anywhere to reopen</text>
+  <rect id="reopen" x="20" y="20" width="860" height="446" rx="12"
+        fill="transparent"/>
+  <set attributeName="display" to="inline" begin="btnClose.click" fill="freeze"/>
+  <set attributeName="display" to="none" begin="reopen.click" fill="freeze"/>
+</g>
+</svg>

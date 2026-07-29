@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1190px" height="758px"
+     viewBox="0 0 1190 758" font-family="ConsolasFallback,Consolas,'DejaVu Sans Mono','Liberation Mono',Menlo,monospace"
+     font-size="16px" fill="#c0c0c0"
+     role="img" aria-label="ishraq@kodezi - Command Prompt">
+<title>ishraq@kodezi - Command Prompt</title>
+<style><![CDATA[
+    @font-face {
+      font-family: 'ConsolasFallback';
+      src: local('Consolas'), local('Consolas Bold');
+      font-display: swap;
+      size-adjust: 109%;
+    }
+    text, tspan { white-space: pre; }
+    .k  { fill: #ffff55; }
+    .kk { fill: #c0c0c0; }
+    .v  { fill: #55ffff; }
+    .a  { fill: #55ff55; }
+    .x  { fill: #ff5555; }
+    .d  { fill: #808080; }
+    .r  { fill: #808080; }
+    .t  { fill: #ffff55; }
+    .bf { fill: #3ea23e; }
+    .be { fill: #1a1a1a; }
+
+    @keyframes boot { from { opacity: 0; } to { opacity: 1; } }
+    .ln { animation: boot .34s ease-out backwards; }
+    .px { animation: boot .3s ease-out backwards; }
+
+    @keyframes breathe {
+      0%, 100% { opacity: .88; }
+      50%      { opacity: 1; }
+    }
+    .portrait-base {
+      animation: breathe 7s ease-in-out infinite;
+      fill: #c0c0c0;
+    }
+
+    .portrait-glow {
+      fill: #ffffff;
+      opacity: 0.45;
+    }
+
+    /* Density tiers. See DENSITY in render.py. */
+    .t0 { fill-opacity: 0.22; }
+    .t1 { fill-opacity: 0.48; }
+    .t2 { fill-opacity: 1; }
+
+    /* Hover: only reachable where the SVG is a live document, never in an
+       img tag. See the note on this function. */
+    .portrait { cursor: crosshair; }
+    .portrait .hit { fill: transparent; pointer-events: all; }
+    .portrait .portrait-base { transition: opacity .35s ease; }
+    .portrait .portrait-glow { transition: opacity .35s ease; }
+    .portrait .chroma { opacity: 0; transition: opacity .35s ease; }
+    .portrait:hover .portrait-base { animation: none; opacity: 1; }
+    .portrait:hover .portrait-glow { opacity: 1; }
+    .portrait:hover .chroma { opacity: .5; }
+    .portrait:hover .sweep-band { animation: none; }
+
+    /* Window buttons. The close button really does close the window - see
+       closed_panel() - but only where the SVG is a live document. */
+    .tl { cursor: pointer; }
+    .tlg { opacity: 0; transition: opacity .12s ease; }
+    .lights:hover .tlg { opacity: .62; }
+    #reopen { cursor: pointer; }
+
+    /* Links. Same story as hover: live wherever the SVG is a real document,
+       inert inside GitHub's img tag. */
+    .lnk { cursor: pointer; }
+    .lnk tspan { transition: fill .15s ease; }
+    .lnk:hover tspan { fill: #ffffff; text-decoration: underline; }
+
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    .cursor { fill: #c0c0c0; animation: blink 1.06s steps(1) infinite; }
+    ]]></style>
+<defs><filter id="drop" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.45"/></filter></defs>
+<g id="win">
+<g filter="url(#drop)" transform="translate(20,20)">
+<defs>
+  <linearGradient id="xpTitle" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3f8cf3"/>
+    <stop offset="12%" stop-color="#0058ee"/>
+    <stop offset="55%" stop-color="#0058ee"/>
+    <stop offset="100%" stop-color="#0058ee"/>
+  </linearGradient>
+  <linearGradient id="xpTask" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3f8cf3"/>
+    <stop offset="14%" stop-color="#245edc"/>
+    <stop offset="100%" stop-color="#245edc"/>
+  </linearGradient>
+  <linearGradient id="xpStart" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#6ac25f"/>
+    <stop offset="55%" stop-color="#3c8b37"/>
+    <stop offset="100%" stop-color="#2f7030"/>
+  </linearGradient>
+</defs>
+<path d="M0 8 A 8 8 0 0 1 8 0
+         H 1142 A 8 8 0 0 1 1150 8
+         V 718 H 0 Z" fill="#0058ee"/>
+<path d="M0 8 A 8 8 0 0 1 8 0
+         H 1142 A 8 8 0 0 1 1150 8
+         V 34 H 0 Z" fill="url(#xpTitle)"/>
+<circle cx="16" cy="17.0" r="7" fill="#ffffff" fill-opacity=".9"/>
+<text x="30" y="22.0" font-size="13px" font-family="Tahoma,Verdana,Segoe UI,sans-serif"
+      font-weight="bold" fill="#ffffff">ishraq@kodezi - Command Prompt</text>
+<g class="tl"><rect x="1080" y="8.0" width="20" height="18" rx="3" fill="#3f7ce0" stroke="#ffffff" stroke-opacity=".55"/><g stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" transform="translate(1086,14.0)"><path d="M0 6 H8"/></g><rect x="1078" y="6.0" width="24" height="22" fill="transparent"/></g><g class="tl"><rect x="1102" y="8.0" width="20" height="18" rx="3" fill="#3f7ce0" stroke="#ffffff" stroke-opacity=".55"/><g stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" transform="translate(1108,13.0)"><rect x="0" y="0" width="8" height="7" fill="none"/></g><rect x="1100" y="6.0" width="24" height="22" fill="transparent"/></g><g id="btnClose" class="tl"><rect x="1124" y="8.0" width="20" height="18" rx="3" fill="#e0563c" stroke="#ffffff" stroke-opacity=".55"/><g stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" transform="translate(1130,13.0)"><path d="M0 0 L8 7 M8 0 L0 7"/></g><rect x="1122" y="6.0" width="24" height="22" fill="transparent"/></g>
+<rect x="4" y="34" width="1142"
+      height="642" fill="#000000"/>
+<rect x="0" y="680" width="1150" height="38" fill="url(#xpTask)"/>
+<rect x="0" y="680" width="1150" height="1.5" fill="#5b9ef5"/>
+<rect x="6" y="685" width="86" height="28" rx="9"
+      fill="url(#xpStart)"/>
+<text x="26" y="704.0" font-size="15px"
+      font-family="Tahoma,Verdana,Segoe UI,sans-serif" font-weight="bold" font-style="italic"
+      fill="#ffffff">start</text>
+<rect x="1034" y="685" width="110" height="28"
+      fill="#1a4fc4" fill-opacity=".7"/>
+<text x="1044" y="703.0" font-size="11px"
+      font-family="Tahoma,Verdana,Segoe UI,sans-serif" fill="#ffffff">2026-07-29</text>
+</g>
+<g class="portrait">
+<defs>
+  <linearGradient id="sweepGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%"   stop-color="#fff" stop-opacity="0"/>
+    <stop offset="35%"  stop-color="#fff" stop-opacity=".85"/>
+    <stop offset="50%"  stop-color="#fff" stop-opacity="1"/>
+    <stop offset="65%"  stop-color="#fff" stop-opacity=".85"/>
+    <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <mask id="sweepMask">
+    <rect class="sweep-band" x="34" y="72" width="512" height="150"
+          fill="url(#sweepGrad)">
+      <animate attributeName="y"
+               values="-78;-78;658;658"
+               keyTimes="0;0.10;0.68;1"
+               dur="9s" repeatCount="indefinite"/>
+    </rect>
+  </mask>
+</defs>
+<g class="chroma">
+<text x="42.5" y="94" font-size="11px" xml:space="preserve" class="portrait-base" fill="#ff2d55">
+<tspan class="px" x="42.5" y="94" style="animation-delay:0.000s">#########*##**********************+**++++++++++++++++++++++++++++++++++++***</tspan>
+<tspan class="px" x="42.5" y="107" style="animation-delay:0.009s">######*#*********************+*+++++++++++++++++++++++++++++++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="120" style="animation-delay:0.018s">#####********************+++++++++++++++++++++++++++++++++++++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="133" style="animation-delay:0.027s">##*******************+*+++++++++++++++++++++++++++++++++++++++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="146" style="animation-delay:0.036s">#****************++++++++++++++++++*++++++++++++++++++++++++++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="159" style="animation-delay:0.045s">**************++++++++++++++++++*####%%#%#####*****+++++++++++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="172" style="animation-delay:0.054s">************+++++++++++++++***##%%%%%%%@@%@%@%%%%#****++++++++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="185" style="animation-delay:0.063s">**********++++++++++++++***##%%%@@%%%%%@@@@@@@@@@@%###*+++++++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="198" style="animation-delay:0.072s">********+++++++++++++++***###%@@@@@@%%@@%%%%%@@@@@@@@%%%++++++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="211" style="animation-delay:0.081s">*****+++++++++++++++++#%#%%%@@@%%%%@%%@@%@@@@@@@@@@@@@@@%*++++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="224" style="animation-delay:0.090s">****+*+++++++++++++++*#%%%%%%%%%%@@@%@@@@@@@@@@@@@@@@@@@%#++++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="237" style="animation-delay:0.099s">***+++++++++++++++++*#%%%%%#%%%%%@@%@%%%@@%%@@@@@@@@@@@@@%#+++++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="250" style="animation-delay:0.108s">***+*+++++++++++++++*%%@@%%%%%%@@@%#++*%%@@%@%@@@@@@@@@@@@##*+++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="263" style="animation-delay:0.117s">*+++++++++++++++++++*%%@%%@@@@@@@%+=-====+*#%%@%%@@@@@@@@@@@@@++++++++++++++</tspan>
+<tspan class="px" x="42.5" y="276" style="animation-delay:0.126s">+++++++++++++++++++##%%%%%%@%%@@%#*+=-===+%%@@%%@@@@%@@@@@@@@@%+++++++++++++</tspan>
+<tspan class="px" x="42.5" y="289" style="animation-delay:0.135s">++++++++++++++++++#%%%@%%%###*++++*++===+####***#%@@@@@@@@@@@@@%++++++++++++</tspan>
+<tspan class="px" x="42.5" y="302" style="animation-delay:0.144s">+++++++++++++++++#%%%%%%%@@%%%*#+#%#*=--+###*%####%@%%@@@@@@@@%#*+=+++++++++</tspan>
+<tspan class="px" x="42.5" y="315" style="animation-delay:0.153s">++++++++++++++++#+*%@%%@%%@%+--=====----+**+++++++#@@%@@@@%@@@@#+=======++++</tspan>
+<tspan class="px" x="42.5" y="328" style="animation-delay:0.162s">++++++++++++++++#+%#%%%%@@@@+-----------+***+===+++%@@@%@@@@@@@%+=+=++=+=+++</tspan>
+<tspan class="px" x="42.5" y="341" style="animation-delay:0.171s">+++++++++++++++++*##%%#%@@@%+-:--====*+=*####+==+++#@@@@@@@@@@##+==========+</tspan>
+<tspan class="px" x="42.5" y="354" style="animation-delay:0.180s">++++++++++++++++++#%%@@@%@@%*---=+----=++##**#*++++##%@@@@@@@@%+=========+==</tspan>
+<tspan class="px" x="42.5" y="367" style="animation-delay:0.189s">++++++++++++++++++++%@@%@%@%#=--===+++++*###%#*+++*%@@@@@@@@@#++===========+</tspan>
+<tspan class="px" x="42.5" y="380" style="animation-delay:0.198s">+++++++++++++++++++++++%%@@@@#-----=-----++#*+++++*@@@@@@@%%%#=============+</tspan>
+<tspan class="px" x="42.5" y="393" style="animation-delay:0.207s">++++++++++++++++++++++#+#@@@@@=------=++*#***++***#@@@@@@@%%================</tspan>
+<tspan class="px" x="42.5" y="406" style="animation-delay:0.216s">++++++++++++++++++++++%*%%@@@@#=------=+++++++**###@@@@#####+===============</tspan>
+<tspan class="px" x="42.5" y="419" style="animation-delay:0.225s">++++++++++++++++++++=+++#%%@@@#--=-----===+++*##**#@@@@@@%+=================</tspan>
+<tspan class="px" x="42.5" y="432" style="animation-delay:0.234s">++++++++++++++++===+====++*#%%#-------=+++*####***#@@@@@%+==================</tspan>
+<tspan class="px" x="42.5" y="445" style="animation-delay:0.243s">++++++++++++++++=+========+++##------=+#%%###***++*%%@%@+===================</tspan>
+<tspan class="px" x="42.5" y="458" style="animation-delay:0.252s">++++++++++++++++==+=========*#+--------=+********+*#+++=====================</tspan>
+<tspan class="px" x="42.5" y="471" style="animation-delay:0.261s">+++++++++++++++++===========+#+--------=+********++*#@##+===================</tspan>
+<tspan class="px" x="42.5" y="484" style="animation-delay:0.270s">++++++++++++++==++========+%%#*------===++++**+++++*#@@@@@@@+===============</tspan>
+<tspan class="px" x="42.5" y="497" style="animation-delay:0.279s">+++++++++++++++=========*#%@%%##----====+++***++*++#@@@@@@@@@@@%#+==========</tspan>
+<tspan class="px" x="42.5" y="510" style="animation-delay:0.288s">++++++++++++==+======+%%%%#@@%%%%%*===++++**+++++*%@@@@@@@@@@@@@@@@%#+======</tspan>
+<tspan class="px" x="42.5" y="523" style="animation-delay:0.297s">+++++++++++++=++==*%%%%%%%##@%%%%%%%%%%####*+++#%@@@@@@%@@@@@%@@%%%%%@%%%+==</tspan>
+<tspan class="px" x="42.5" y="536" style="animation-delay:0.306s">++++++++++==++=+##%%#%%%%%%#%@%%%%%%%%%%%%%%@@@@@@@@@@@%@@@@%%@%%%%%@@%@@%%#</tspan>
+<tspan class="px" x="42.5" y="549" style="animation-delay:0.315s">+++++++++++++##%#%%%%%#%@%%%#@%%%%%%%%##%%%%%%@@@@@%%@@%@@@@%%@%%@%%@%@@%%@@</tspan>
+<tspan class="px" x="42.5" y="562" style="animation-delay:0.324s">+++++++++++#%%%%%##%%%@%%@@%#%@%%%%%%@%%%%%@@@@@%%@%%@%%@@@@%%@@%%%@%%@%%@@@</tspan>
+<tspan class="px" x="42.5" y="575" style="animation-delay:0.333s">+++++++++#%%%%%%%%%#@%%@%%@@%#@@%%%%%%@%%%%%%%@@%%%%%%%%%@@%%%%@%%%@%@@%%%@@</tspan>
+<tspan class="px" x="42.5" y="588" style="animation-delay:0.342s">++++++++###%%%%%%%%%%@%%@%%@%%%@%%%%%%%@@%%%@@@%%%%%%%%%%@@%%%%@%%@%%@%%%@@@</tspan>
+<tspan class="px" x="42.5" y="601" style="animation-delay:0.351s">+++++++###%##%%%%%%%%%@%@%%@@%%%@%%%%%%%@@%%@@@%%%%%%%%%%@%%%@%@@%@%%%%%@%%@</tspan>
+<tspan class="px" x="42.5" y="614" style="animation-delay:0.360s">++++++####%%%%%%%%%%%%%%@@%%@@%%@@%%%%%%%@@%%@@%%%%%%%%%%%%%%@%%@%%%%@%@%@@@</tspan>
+</text>
+<text x="45.5" y="94" font-size="11px" xml:space="preserve" class="portrait-base" fill="#00d4ff">
+<tspan class="px" x="45.5" y="94" style="animation-delay:0.000s">#########*##**********************+**++++++++++++++++++++++++++++++++++++***</tspan>
+<tspan class="px" x="45.5" y="107" style="animation-delay:0.009s">######*#*********************+*+++++++++++++++++++++++++++++++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="120" style="animation-delay:0.018s">#####********************+++++++++++++++++++++++++++++++++++++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="133" style="animation-delay:0.027s">##*******************+*+++++++++++++++++++++++++++++++++++++++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="146" style="animation-delay:0.036s">#****************++++++++++++++++++*++++++++++++++++++++++++++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="159" style="animation-delay:0.045s">**************++++++++++++++++++*####%%#%#####*****+++++++++++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="172" style="animation-delay:0.054s">************+++++++++++++++***##%%%%%%%@@%@%@%%%%#****++++++++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="185" style="animation-delay:0.063s">**********++++++++++++++***##%%%@@%%%%%@@@@@@@@@@@%###*+++++++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="198" style="animation-delay:0.072s">********+++++++++++++++***###%@@@@@@%%@@%%%%%@@@@@@@@%%%++++++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="211" style="animation-delay:0.081s">*****+++++++++++++++++#%#%%%@@@%%%%@%%@@%@@@@@@@@@@@@@@@%*++++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="224" style="animation-delay:0.090s">****+*+++++++++++++++*#%%%%%%%%%%@@@%@@@@@@@@@@@@@@@@@@@%#++++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="237" style="animation-delay:0.099s">***+++++++++++++++++*#%%%%%#%%%%%@@%@%%%@@%%@@@@@@@@@@@@@%#+++++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="250" style="animation-delay:0.108s">***+*+++++++++++++++*%%@@%%%%%%@@@%#++*%%@@%@%@@@@@@@@@@@@##*+++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="263" style="animation-delay:0.117s">*+++++++++++++++++++*%%@%%@@@@@@@%+=-====+*#%%@%%@@@@@@@@@@@@@++++++++++++++</tspan>
+<tspan class="px" x="45.5" y="276" style="animation-delay:0.126s">+++++++++++++++++++##%%%%%%@%%@@%#*+=-===+%%@@%%@@@@%@@@@@@@@@%+++++++++++++</tspan>
+<tspan class="px" x="45.5" y="289" style="animation-delay:0.135s">++++++++++++++++++#%%%@%%%###*++++*++===+####***#%@@@@@@@@@@@@@%++++++++++++</tspan>
+<tspan class="px" x="45.5" y="302" style="animation-delay:0.144s">+++++++++++++++++#%%%%%%%@@%%%*#+#%#*=--+###*%####%@%%@@@@@@@@%#*+=+++++++++</tspan>
+<tspan class="px" x="45.5" y="315" style="animation-delay:0.153s">++++++++++++++++#+*%@%%@%%@%+--=====----+**+++++++#@@%@@@@%@@@@#+=======++++</tspan>
+<tspan class="px" x="45.5" y="328" style="animation-delay:0.162s">++++++++++++++++#+%#%%%%@@@@+-----------+***+===+++%@@@%@@@@@@@%+=+=++=+=+++</tspan>
+<tspan class="px" x="45.5" y="341" style="animation-delay:0.171s">+++++++++++++++++*##%%#%@@@%+-:--====*+=*####+==+++#@@@@@@@@@@##+==========+</tspan>
+<tspan class="px" x="45.5" y="354" style="animation-delay:0.180s">++++++++++++++++++#%%@@@%@@%*---=+----=++##**#*++++##%@@@@@@@@%+=========+==</tspan>
+<tspan class="px" x="45.5" y="367" style="animation-delay:0.189s">++++++++++++++++++++%@@%@%@%#=--===+++++*###%#*+++*%@@@@@@@@@#++===========+</tspan>
+<tspan class="px" x="45.5" y="380" style="animation-delay:0.198s">+++++++++++++++++++++++%%@@@@#-----=-----++#*+++++*@@@@@@@%%%#=============+</tspan>
+<tspan class="px" x="45.5" y="393" style="animation-delay:0.207s">++++++++++++++++++++++#+#@@@@@=------=++*#***++***#@@@@@@@%%================</tspan>
+<tspan class="px" x="45.5" y="406" style="animation-delay:0.216s">++++++++++++++++++++++%*%%@@@@#=------=+++++++**###@@@@#####+===============</tspan>
+<tspan class="px" x="45.5" y="419" style="animation-delay:0.225s">++++++++++++++++++++=+++#%%@@@#--=-----===+++*##**#@@@@@@%+=================</tspan>
+<tspan class="px" x="45.5" y="432" style="animation-delay:0.234s">++++++++++++++++===+====++*#%%#-------=+++*####***#@@@@@%+==================</tspan>
+<tspan class="px" x="45.5" y="445" style="animation-delay:0.243s">++++++++++++++++=+========+++##------=+#%%###***++*%%@%@+===================</tspan>
+<tspan class="px" x="45.5" y="458" style="animation-delay:0.252s">++++++++++++++++==+=========*#+--------=+********+*#+++=====================</tspan>
+<tspan class="px" x="45.5" y="471" style="animation-delay:0.261s">+++++++++++++++++===========+#+--------=+********++*#@##+===================</tspan>
+<tspan class="px" x="45.5" y="484" style="animation-delay:0.270s">++++++++++++++==++========+%%#*------===++++**+++++*#@@@@@@@+===============</tspan>
+<tspan class="px" x="45.5" y="497" style="animation-delay:0.279s">+++++++++++++++=========*#%@%%##----====+++***++*++#@@@@@@@@@@@%#+==========</tspan>
+<tspan class="px" x="45.5" y="510" style="animation-delay:0.288s">++++++++++++==+======+%%%%#@@%%%%%*===++++**+++++*%@@@@@@@@@@@@@@@@%#+======</tspan>
+<tspan class="px" x="45.5" y="523" style="animation-delay:0.297s">+++++++++++++=++==*%%%%%%%##@%%%%%%%%%%####*+++#%@@@@@@%@@@@@%@@%%%%%@%%%+==</tspan>
+<tspan class="px" x="45.5" y="536" style="animation-delay:0.306s">++++++++++==++=+##%%#%%%%%%#%@%%%%%%%%%%%%%%@@@@@@@@@@@%@@@@%%@%%%%%@@%@@%%#</tspan>
+<tspan class="px" x="45.5" y="549" style="animation-delay:0.315s">+++++++++++++##%#%%%%%#%@%%%#@%%%%%%%%##%%%%%%@@@@@%%@@%@@@@%%@%%@%%@%@@%%@@</tspan>
+<tspan class="px" x="45.5" y="562" style="animation-delay:0.324s">+++++++++++#%%%%%##%%%@%%@@%#%@%%%%%%@%%%%%@@@@@%%@%%@%%@@@@%%@@%%%@%%@%%@@@</tspan>
+<tspan class="px" x="45.5" y="575" style="animation-delay:0.333s">+++++++++#%%%%%%%%%#@%%@%%@@%#@@%%%%%%@%%%%%%%@@%%%%%%%%%@@%%%%@%%%@%@@%%%@@</tspan>
+<tspan class="px" x="45.5" y="588" style="animation-delay:0.342s">++++++++###%%%%%%%%%%@%%@%%@%%%@%%%%%%%@@%%%@@@%%%%%%%%%%@@%%%%@%%@%%@%%%@@@</tspan>
+<tspan class="px" x="45.5" y="601" style="animation-delay:0.351s">+++++++###%##%%%%%%%%%@%@%%@@%%%@%%%%%%%@@%%@@@%%%%%%%%%%@%%%@%@@%@%%%%%@%%@</tspan>
+<tspan class="px" x="45.5" y="614" style="animation-delay:0.360s">++++++####%%%%%%%%%%%%%%@@%%@@%%@@%%%%%%%@@%%@@%%%%%%%%%%%%%%@%%@%%%%@%@%@@@</tspan>
+</text>
+</g>
+<text x="44" y="94" font-size="11px" xml:space="preserve" class="portrait-base">
+<tspan class="px" x="44" y="94" style="animation-delay:0.000s"><tspan class="t2">#########</tspan><tspan class="t1">*</tspan><tspan class="t2">##</tspan><tspan class="t1">**********************+**++++++++++++++++++++++++++++++++++++***</tspan></tspan>
+<tspan class="px" x="44" y="107" style="animation-delay:0.009s"><tspan class="t2">######</tspan><tspan class="t1">*</tspan><tspan class="t2">#</tspan><tspan class="t1">*********************+*+++++++++++++++++++++++++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="120" style="animation-delay:0.018s"><tspan class="t2">#####</tspan><tspan class="t1">********************+++++++++++++++++++++++++++++++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="133" style="animation-delay:0.027s"><tspan class="t2">##</tspan><tspan class="t1">*******************+*+++++++++++++++++++++++++++++++++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="146" style="animation-delay:0.036s"><tspan class="t2">#</tspan><tspan class="t1">****************++++++++++++++++++*++++++++++++++++++++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="159" style="animation-delay:0.045s"><tspan class="t1">**************++++++++++++++++++*</tspan><tspan class="t2">####%%#%#####</tspan><tspan class="t1">*****+++++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="172" style="animation-delay:0.054s"><tspan class="t1">************+++++++++++++++***</tspan><tspan class="t2">##%%%%%%%@@%@%@%%%%#</tspan><tspan class="t1">****++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="185" style="animation-delay:0.063s"><tspan class="t1">**********++++++++++++++***</tspan><tspan class="t2">##%%%@@%%%%%@@@@@@@@@@@%###</tspan><tspan class="t1">*+++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="198" style="animation-delay:0.072s"><tspan class="t1">********+++++++++++++++***</tspan><tspan class="t2">###%@@@@@@%%@@%%%%%@@@@@@@@%%%</tspan><tspan class="t1">++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="211" style="animation-delay:0.081s"><tspan class="t1">*****+++++++++++++++++</tspan><tspan class="t2">#%#%%%@@@%%%%@%%@@%@@@@@@@@@@@@@@@%</tspan><tspan class="t1">*++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="224" style="animation-delay:0.090s"><tspan class="t1">****+*+++++++++++++++*</tspan><tspan class="t2">#%%%%%%%%%%@@@%@@@@@@@@@@@@@@@@@@@%#</tspan><tspan class="t1">++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="237" style="animation-delay:0.099s"><tspan class="t1">***+++++++++++++++++*</tspan><tspan class="t2">#%%%%%#%%%%%@@%@%%%@@%%@@@@@@@@@@@@@%#</tspan><tspan class="t1">+++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="250" style="animation-delay:0.108s"><tspan class="t1">***+*+++++++++++++++*</tspan><tspan class="t2">%%@@%%%%%%@@@%#</tspan><tspan class="t1">++*</tspan><tspan class="t2">%%@@%@%@@@@@@@@@@@@##</tspan><tspan class="t1">*+++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="263" style="animation-delay:0.117s"><tspan class="t1">*+++++++++++++++++++*</tspan><tspan class="t2">%%@%%@@@@@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">=-====</tspan><tspan class="t1">+*</tspan><tspan class="t2">#%%@%%@@@@@@@@@@@@@</tspan><tspan class="t1">++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="276" style="animation-delay:0.126s"><tspan class="t1">+++++++++++++++++++</tspan><tspan class="t2">##%%%%%%@%%@@%#</tspan><tspan class="t1">*+</tspan><tspan class="t0">=-===</tspan><tspan class="t1">+</tspan><tspan class="t2">%%@@%%@@@@%@@@@@@@@@%</tspan><tspan class="t1">+++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="289" style="animation-delay:0.135s"><tspan class="t1">++++++++++++++++++</tspan><tspan class="t2">#%%%@%%%###</tspan><tspan class="t1">*++++*++</tspan><tspan class="t0">===</tspan><tspan class="t1">+</tspan><tspan class="t2">####</tspan><tspan class="t1">***</tspan><tspan class="t2">#%@@@@@@@@@@@@@%</tspan><tspan class="t1">++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="302" style="animation-delay:0.144s"><tspan class="t1">+++++++++++++++++</tspan><tspan class="t2">#%%%%%%%@@%%%</tspan><tspan class="t1">*</tspan><tspan class="t2">#</tspan><tspan class="t1">+</tspan><tspan class="t2">#%#</tspan><tspan class="t1">*</tspan><tspan class="t0">=--</tspan><tspan class="t1">+</tspan><tspan class="t2">###</tspan><tspan class="t1">*</tspan><tspan class="t2">%####%@%%@@@@@@@@%#</tspan><tspan class="t1">*+</tspan><tspan class="t0">=</tspan><tspan class="t1">+++++++++</tspan></tspan>
+<tspan class="px" x="44" y="315" style="animation-delay:0.153s"><tspan class="t1">++++++++++++++++</tspan><tspan class="t2">#</tspan><tspan class="t1">+*</tspan><tspan class="t2">%@%%@%%@%</tspan><tspan class="t1">+</tspan><tspan class="t0">--=====----</tspan><tspan class="t1">+**+++++++</tspan><tspan class="t2">#@@%@@@@%@@@@#</tspan><tspan class="t1">+</tspan><tspan class="t0">=======</tspan><tspan class="t1">++++</tspan></tspan>
+<tspan class="px" x="44" y="328" style="animation-delay:0.162s"><tspan class="t1">++++++++++++++++</tspan><tspan class="t2">#</tspan><tspan class="t1">+</tspan><tspan class="t2">%#%%%%@@@@</tspan><tspan class="t1">+</tspan><tspan class="t0">-----------</tspan><tspan class="t1">+***+</tspan><tspan class="t0">===</tspan><tspan class="t1">+++</tspan><tspan class="t2">%@@@%@@@@@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">=</tspan><tspan class="t1">+</tspan><tspan class="t0">=</tspan><tspan class="t1">++</tspan><tspan class="t0">=</tspan><tspan class="t1">+</tspan><tspan class="t0">=</tspan><tspan class="t1">+++</tspan></tspan>
+<tspan class="px" x="44" y="341" style="animation-delay:0.171s"><tspan class="t1">+++++++++++++++++*</tspan><tspan class="t2">##%%#%@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">-:--====</tspan><tspan class="t1">*+</tspan><tspan class="t0">=</tspan><tspan class="t1">*</tspan><tspan class="t2">####</tspan><tspan class="t1">+</tspan><tspan class="t0">==</tspan><tspan class="t1">+++</tspan><tspan class="t2">#@@@@@@@@@@##</tspan><tspan class="t1">+</tspan><tspan class="t0">==========</tspan><tspan class="t1">+</tspan></tspan>
+<tspan class="px" x="44" y="354" style="animation-delay:0.180s"><tspan class="t1">++++++++++++++++++</tspan><tspan class="t2">#%%@@@%@@%</tspan><tspan class="t1">*</tspan><tspan class="t0">---=</tspan><tspan class="t1">+</tspan><tspan class="t0">----=</tspan><tspan class="t1">++</tspan><tspan class="t2">##</tspan><tspan class="t1">**</tspan><tspan class="t2">#</tspan><tspan class="t1">*++++</tspan><tspan class="t2">##%@@@@@@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">=========</tspan><tspan class="t1">+</tspan><tspan class="t0">==</tspan></tspan>
+<tspan class="px" x="44" y="367" style="animation-delay:0.189s"><tspan class="t1">++++++++++++++++++++</tspan><tspan class="t2">%@@%@%@%#</tspan><tspan class="t0">=--===</tspan><tspan class="t1">+++++*</tspan><tspan class="t2">###%#</tspan><tspan class="t1">*+++*</tspan><tspan class="t2">%@@@@@@@@@#</tspan><tspan class="t1">++</tspan><tspan class="t0">===========</tspan><tspan class="t1">+</tspan></tspan>
+<tspan class="px" x="44" y="380" style="animation-delay:0.198s"><tspan class="t1">+++++++++++++++++++++++</tspan><tspan class="t2">%%@@@@#</tspan><tspan class="t0">-----=-----</tspan><tspan class="t1">++</tspan><tspan class="t2">#</tspan><tspan class="t1">*+++++*</tspan><tspan class="t2">@@@@@@@%%%#</tspan><tspan class="t0">=============</tspan><tspan class="t1">+</tspan></tspan>
+<tspan class="px" x="44" y="393" style="animation-delay:0.207s"><tspan class="t1">++++++++++++++++++++++</tspan><tspan class="t2">#</tspan><tspan class="t1">+</tspan><tspan class="t2">#@@@@@</tspan><tspan class="t0">=------=</tspan><tspan class="t1">++*</tspan><tspan class="t2">#</tspan><tspan class="t1">***++***</tspan><tspan class="t2">#@@@@@@@%%</tspan><tspan class="t0">================</tspan></tspan>
+<tspan class="px" x="44" y="406" style="animation-delay:0.216s"><tspan class="t1">++++++++++++++++++++++</tspan><tspan class="t2">%</tspan><tspan class="t1">*</tspan><tspan class="t2">%%@@@@#</tspan><tspan class="t0">=------=</tspan><tspan class="t1">+++++++**</tspan><tspan class="t2">###@@@@#####</tspan><tspan class="t1">+</tspan><tspan class="t0">===============</tspan></tspan>
+<tspan class="px" x="44" y="419" style="animation-delay:0.225s"><tspan class="t1">++++++++++++++++++++</tspan><tspan class="t0">=</tspan><tspan class="t1">+++</tspan><tspan class="t2">#%%@@@#</tspan><tspan class="t0">--=-----===</tspan><tspan class="t1">+++*</tspan><tspan class="t2">##</tspan><tspan class="t1">**</tspan><tspan class="t2">#@@@@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">=================</tspan></tspan>
+<tspan class="px" x="44" y="432" style="animation-delay:0.234s"><tspan class="t1">++++++++++++++++</tspan><tspan class="t0">===</tspan><tspan class="t1">+</tspan><tspan class="t0">====</tspan><tspan class="t1">++*</tspan><tspan class="t2">#%%#</tspan><tspan class="t0">-------=</tspan><tspan class="t1">+++*</tspan><tspan class="t2">####</tspan><tspan class="t1">***</tspan><tspan class="t2">#@@@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">==================</tspan></tspan>
+<tspan class="px" x="44" y="445" style="animation-delay:0.243s"><tspan class="t1">++++++++++++++++</tspan><tspan class="t0">=</tspan><tspan class="t1">+</tspan><tspan class="t0">========</tspan><tspan class="t1">+++</tspan><tspan class="t2">##</tspan><tspan class="t0">------=</tspan><tspan class="t1">+</tspan><tspan class="t2">#%%###</tspan><tspan class="t1">***++*</tspan><tspan class="t2">%%@%@</tspan><tspan class="t1">+</tspan><tspan class="t0">===================</tspan></tspan>
+<tspan class="px" x="44" y="458" style="animation-delay:0.252s"><tspan class="t1">++++++++++++++++</tspan><tspan class="t0">==</tspan><tspan class="t1">+</tspan><tspan class="t0">=========</tspan><tspan class="t1">*</tspan><tspan class="t2">#</tspan><tspan class="t1">+</tspan><tspan class="t0">--------=</tspan><tspan class="t1">+********+*</tspan><tspan class="t2">#</tspan><tspan class="t1">+++</tspan><tspan class="t0">=====================</tspan></tspan>
+<tspan class="px" x="44" y="471" style="animation-delay:0.261s"><tspan class="t1">+++++++++++++++++</tspan><tspan class="t0">===========</tspan><tspan class="t1">+</tspan><tspan class="t2">#</tspan><tspan class="t1">+</tspan><tspan class="t0">--------=</tspan><tspan class="t1">+********++*</tspan><tspan class="t2">#@##</tspan><tspan class="t1">+</tspan><tspan class="t0">===================</tspan></tspan>
+<tspan class="px" x="44" y="484" style="animation-delay:0.270s"><tspan class="t1">++++++++++++++</tspan><tspan class="t0">==</tspan><tspan class="t1">++</tspan><tspan class="t0">========</tspan><tspan class="t1">+</tspan><tspan class="t2">%%#</tspan><tspan class="t1">*</tspan><tspan class="t0">------===</tspan><tspan class="t1">++++**+++++*</tspan><tspan class="t2">#@@@@@@@</tspan><tspan class="t1">+</tspan><tspan class="t0">===============</tspan></tspan>
+<tspan class="px" x="44" y="497" style="animation-delay:0.279s"><tspan class="t1">+++++++++++++++</tspan><tspan class="t0">=========</tspan><tspan class="t1">*</tspan><tspan class="t2">#%@%%##</tspan><tspan class="t0">----====</tspan><tspan class="t1">+++***++*++</tspan><tspan class="t2">#@@@@@@@@@@@%#</tspan><tspan class="t1">+</tspan><tspan class="t0">==========</tspan></tspan>
+<tspan class="px" x="44" y="510" style="animation-delay:0.288s"><tspan class="t1">++++++++++++</tspan><tspan class="t0">==</tspan><tspan class="t1">+</tspan><tspan class="t0">======</tspan><tspan class="t1">+</tspan><tspan class="t2">%%%%#@@%%%%%</tspan><tspan class="t1">*</tspan><tspan class="t0">===</tspan><tspan class="t1">++++**+++++*</tspan><tspan class="t2">%@@@@@@@@@@@@@@@@%#</tspan><tspan class="t1">+</tspan><tspan class="t0">======</tspan></tspan>
+<tspan class="px" x="44" y="523" style="animation-delay:0.297s"><tspan class="t1">+++++++++++++</tspan><tspan class="t0">=</tspan><tspan class="t1">++</tspan><tspan class="t0">==</tspan><tspan class="t1">*</tspan><tspan class="t2">%%%%%%%##@%%%%%%%%%%####</tspan><tspan class="t1">*+++</tspan><tspan class="t2">#%@@@@@@%@@@@@%@@%%%%%@%%%</tspan><tspan class="t1">+</tspan><tspan class="t0">==</tspan></tspan>
+<tspan class="px" x="44" y="536" style="animation-delay:0.306s"><tspan class="t1">++++++++++</tspan><tspan class="t0">==</tspan><tspan class="t1">++</tspan><tspan class="t0">=</tspan><tspan class="t1">+</tspan><tspan class="t2">##%%#%%%%%%#%@%%%%%%%%%%%%%%@@@@@@@@@@@%@@@@%%@%%%%%@@%@@%%#</tspan></tspan>
+<tspan class="px" x="44" y="549" style="animation-delay:0.315s"><tspan class="t1">+++++++++++++</tspan><tspan class="t2">##%#%%%%%#%@%%%#@%%%%%%%%##%%%%%%@@@@@%%@@%@@@@%%@%%@%%@%@@%%@@</tspan></tspan>
+<tspan class="px" x="44" y="562" style="animation-delay:0.324s"><tspan class="t1">+++++++++++</tspan><tspan class="t2">#%%%%%##%%%@%%@@%#%@%%%%%%@%%%%%@@@@@%%@%%@%%@@@@%%@@%%%@%%@%%@@@</tspan></tspan>
+<tspan class="px" x="44" y="575" style="animation-delay:0.333s"><tspan class="t1">+++++++++</tspan><tspan class="t2">#%%%%%%%%%#@%%@%%@@%#@@%%%%%%@%%%%%%%@@%%%%%%%%%@@%%%%@%%%@%@@%%%@@</tspan></tspan>
+<tspan class="px" x="44" y="588" style="animation-delay:0.342s"><tspan class="t1">++++++++</tspan><tspan class="t2">###%%%%%%%%%%@%%@%%@%%%@%%%%%%%@@%%%@@@%%%%%%%%%%@@%%%%@%%@%%@%%%@@@</tspan></tspan>
+<tspan class="px" x="44" y="601" style="animation-delay:0.351s"><tspan class="t1">+++++++</tspan><tspan class="t2">###%##%%%%%%%%%@%@%%@@%%%@%%%%%%%@@%%@@@%%%%%%%%%%@%%%@%@@%@%%%%%@%%@</tspan></tspan>
+<tspan class="px" x="44" y="614" style="animation-delay:0.360s"><tspan class="t1">++++++</tspan><tspan class="t2">####%%%%%%%%%%%%%%@@%%@@%%@@%%%%%%%@@%%@@%%%%%%%%%%%%%%@%%@%%%%@%@%@@@</tspan></tspan>
+</text>
+<g mask="url(#sweepMask)">
+<text x="44" y="94" font-size="11px" xml:space="preserve" class="portrait-glow">
+<tspan class="px" x="44" y="94" style="animation-delay:0.000s"><tspan class="t2">#########</tspan><tspan class="t1">*</tspan><tspan class="t2">##</tspan><tspan class="t1">**********************+**++++++++++++++++++++++++++++++++++++***</tspan></tspan>
+<tspan class="px" x="44" y="107" style="animation-delay:0.009s"><tspan class="t2">######</tspan><tspan class="t1">*</tspan><tspan class="t2">#</tspan><tspan class="t1">*********************+*+++++++++++++++++++++++++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="120" style="animation-delay:0.018s"><tspan class="t2">#####</tspan><tspan class="t1">********************+++++++++++++++++++++++++++++++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="133" style="animation-delay:0.027s"><tspan class="t2">##</tspan><tspan class="t1">*******************+*+++++++++++++++++++++++++++++++++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="146" style="animation-delay:0.036s"><tspan class="t2">#</tspan><tspan class="t1">****************++++++++++++++++++*++++++++++++++++++++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="159" style="animation-delay:0.045s"><tspan class="t1">**************++++++++++++++++++*</tspan><tspan class="t2">####%%#%#####</tspan><tspan class="t1">*****+++++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="172" style="animation-delay:0.054s"><tspan class="t1">************+++++++++++++++***</tspan><tspan class="t2">##%%%%%%%@@%@%@%%%%#</tspan><tspan class="t1">****++++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="185" style="animation-delay:0.063s"><tspan class="t1">**********++++++++++++++***</tspan><tspan class="t2">##%%%@@%%%%%@@@@@@@@@@@%###</tspan><tspan class="t1">*+++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="198" style="animation-delay:0.072s"><tspan class="t1">********+++++++++++++++***</tspan><tspan class="t2">###%@@@@@@%%@@%%%%%@@@@@@@@%%%</tspan><tspan class="t1">++++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="211" style="animation-delay:0.081s"><tspan class="t1">*****+++++++++++++++++</tspan><tspan class="t2">#%#%%%@@@%%%%@%%@@%@@@@@@@@@@@@@@@%</tspan><tspan class="t1">*++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="224" style="animation-delay:0.090s"><tspan class="t1">****+*+++++++++++++++*</tspan><tspan class="t2">#%%%%%%%%%%@@@%@@@@@@@@@@@@@@@@@@@%#</tspan><tspan class="t1">++++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="237" style="animation-delay:0.099s"><tspan class="t1">***+++++++++++++++++*</tspan><tspan class="t2">#%%%%%#%%%%%@@%@%%%@@%%@@@@@@@@@@@@@%#</tspan><tspan class="t1">+++++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="250" style="animation-delay:0.108s"><tspan class="t1">***+*+++++++++++++++*</tspan><tspan class="t2">%%@@%%%%%%@@@%#</tspan><tspan class="t1">++*</tspan><tspan class="t2">%%@@%@%@@@@@@@@@@@@##</tspan><tspan class="t1">*+++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="263" style="animation-delay:0.117s"><tspan class="t1">*+++++++++++++++++++*</tspan><tspan class="t2">%%@%%@@@@@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">=-====</tspan><tspan class="t1">+*</tspan><tspan class="t2">#%%@%%@@@@@@@@@@@@@</tspan><tspan class="t1">++++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="276" style="animation-delay:0.126s"><tspan class="t1">+++++++++++++++++++</tspan><tspan class="t2">##%%%%%%@%%@@%#</tspan><tspan class="t1">*+</tspan><tspan class="t0">=-===</tspan><tspan class="t1">+</tspan><tspan class="t2">%%@@%%@@@@%@@@@@@@@@%</tspan><tspan class="t1">+++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="289" style="animation-delay:0.135s"><tspan class="t1">++++++++++++++++++</tspan><tspan class="t2">#%%%@%%%###</tspan><tspan class="t1">*++++*++</tspan><tspan class="t0">===</tspan><tspan class="t1">+</tspan><tspan class="t2">####</tspan><tspan class="t1">***</tspan><tspan class="t2">#%@@@@@@@@@@@@@%</tspan><tspan class="t1">++++++++++++</tspan></tspan>
+<tspan class="px" x="44" y="302" style="animation-delay:0.144s"><tspan class="t1">+++++++++++++++++</tspan><tspan class="t2">#%%%%%%%@@%%%</tspan><tspan class="t1">*</tspan><tspan class="t2">#</tspan><tspan class="t1">+</tspan><tspan class="t2">#%#</tspan><tspan class="t1">*</tspan><tspan class="t0">=--</tspan><tspan class="t1">+</tspan><tspan class="t2">###</tspan><tspan class="t1">*</tspan><tspan class="t2">%####%@%%@@@@@@@@%#</tspan><tspan class="t1">*+</tspan><tspan class="t0">=</tspan><tspan class="t1">+++++++++</tspan></tspan>
+<tspan class="px" x="44" y="315" style="animation-delay:0.153s"><tspan class="t1">++++++++++++++++</tspan><tspan class="t2">#</tspan><tspan class="t1">+*</tspan><tspan class="t2">%@%%@%%@%</tspan><tspan class="t1">+</tspan><tspan class="t0">--=====----</tspan><tspan class="t1">+**+++++++</tspan><tspan class="t2">#@@%@@@@%@@@@#</tspan><tspan class="t1">+</tspan><tspan class="t0">=======</tspan><tspan class="t1">++++</tspan></tspan>
+<tspan class="px" x="44" y="328" style="animation-delay:0.162s"><tspan class="t1">++++++++++++++++</tspan><tspan class="t2">#</tspan><tspan class="t1">+</tspan><tspan class="t2">%#%%%%@@@@</tspan><tspan class="t1">+</tspan><tspan class="t0">-----------</tspan><tspan class="t1">+***+</tspan><tspan class="t0">===</tspan><tspan class="t1">+++</tspan><tspan class="t2">%@@@%@@@@@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">=</tspan><tspan class="t1">+</tspan><tspan class="t0">=</tspan><tspan class="t1">++</tspan><tspan class="t0">=</tspan><tspan class="t1">+</tspan><tspan class="t0">=</tspan><tspan class="t1">+++</tspan></tspan>
+<tspan class="px" x="44" y="341" style="animation-delay:0.171s"><tspan class="t1">+++++++++++++++++*</tspan><tspan class="t2">##%%#%@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">-:--====</tspan><tspan class="t1">*+</tspan><tspan class="t0">=</tspan><tspan class="t1">*</tspan><tspan class="t2">####</tspan><tspan class="t1">+</tspan><tspan class="t0">==</tspan><tspan class="t1">+++</tspan><tspan class="t2">#@@@@@@@@@@##</tspan><tspan class="t1">+</tspan><tspan class="t0">==========</tspan><tspan class="t1">+</tspan></tspan>
+<tspan class="px" x="44" y="354" style="animation-delay:0.180s"><tspan class="t1">++++++++++++++++++</tspan><tspan class="t2">#%%@@@%@@%</tspan><tspan class="t1">*</tspan><tspan class="t0">---=</tspan><tspan class="t1">+</tspan><tspan class="t0">----=</tspan><tspan class="t1">++</tspan><tspan class="t2">##</tspan><tspan class="t1">**</tspan><tspan class="t2">#</tspan><tspan class="t1">*++++</tspan><tspan class="t2">##%@@@@@@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">=========</tspan><tspan class="t1">+</tspan><tspan class="t0">==</tspan></tspan>
+<tspan class="px" x="44" y="367" style="animation-delay:0.189s"><tspan class="t1">++++++++++++++++++++</tspan><tspan class="t2">%@@%@%@%#</tspan><tspan class="t0">=--===</tspan><tspan class="t1">+++++*</tspan><tspan class="t2">###%#</tspan><tspan class="t1">*+++*</tspan><tspan class="t2">%@@@@@@@@@#</tspan><tspan class="t1">++</tspan><tspan class="t0">===========</tspan><tspan class="t1">+</tspan></tspan>
+<tspan class="px" x="44" y="380" style="animation-delay:0.198s"><tspan class="t1">+++++++++++++++++++++++</tspan><tspan class="t2">%%@@@@#</tspan><tspan class="t0">-----=-----</tspan><tspan class="t1">++</tspan><tspan class="t2">#</tspan><tspan class="t1">*+++++*</tspan><tspan class="t2">@@@@@@@%%%#</tspan><tspan class="t0">=============</tspan><tspan class="t1">+</tspan></tspan>
+<tspan class="px" x="44" y="393" style="animation-delay:0.207s"><tspan class="t1">++++++++++++++++++++++</tspan><tspan class="t2">#</tspan><tspan class="t1">+</tspan><tspan class="t2">#@@@@@</tspan><tspan class="t0">=------=</tspan><tspan class="t1">++*</tspan><tspan class="t2">#</tspan><tspan class="t1">***++***</tspan><tspan class="t2">#@@@@@@@%%</tspan><tspan class="t0">================</tspan></tspan>
+<tspan class="px" x="44" y="406" style="animation-delay:0.216s"><tspan class="t1">++++++++++++++++++++++</tspan><tspan class="t2">%</tspan><tspan class="t1">*</tspan><tspan class="t2">%%@@@@#</tspan><tspan class="t0">=------=</tspan><tspan class="t1">+++++++**</tspan><tspan class="t2">###@@@@#####</tspan><tspan class="t1">+</tspan><tspan class="t0">===============</tspan></tspan>
+<tspan class="px" x="44" y="419" style="animation-delay:0.225s"><tspan class="t1">++++++++++++++++++++</tspan><tspan class="t0">=</tspan><tspan class="t1">+++</tspan><tspan class="t2">#%%@@@#</tspan><tspan class="t0">--=-----===</tspan><tspan class="t1">+++*</tspan><tspan class="t2">##</tspan><tspan class="t1">**</tspan><tspan class="t2">#@@@@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">=================</tspan></tspan>
+<tspan class="px" x="44" y="432" style="animation-delay:0.234s"><tspan class="t1">++++++++++++++++</tspan><tspan class="t0">===</tspan><tspan class="t1">+</tspan><tspan class="t0">====</tspan><tspan class="t1">++*</tspan><tspan class="t2">#%%#</tspan><tspan class="t0">-------=</tspan><tspan class="t1">+++*</tspan><tspan class="t2">####</tspan><tspan class="t1">***</tspan><tspan class="t2">#@@@@@%</tspan><tspan class="t1">+</tspan><tspan class="t0">==================</tspan></tspan>
+<tspan class="px" x="44" y="445" style="animation-delay:0.243s"><tspan class="t1">++++++++++++++++</tspan><tspan class="t0">=</tspan><tspan class="t1">+</tspan><tspan class="t0">========</tspan><tspan class="t1">+++</tspan><tspan class="t2">##</tspan><tspan class="t0">------=</tspan><tspan class="t1">+</tspan><tspan class="t2">#%%###</tspan><tspan class="t1">***++*</tspan><tspan class="t2">%%@%@</tspan><tspan class="t1">+</tspan><tspan class="t0">===================</tspan></tspan>
+<tspan class="px" x="44" y="458" style="animation-delay:0.252s"><tspan class="t1">++++++++++++++++</tspan><tspan class="t0">==</tspan><tspan class="t1">+</tspan><tspan class="t0">=========</tspan><tspan class="t1">*</tspan><tspan class="t2">#</tspan><tspan class="t1">+</tspan><tspan class="t0">--------=</tspan><tspan class="t1">+********+*</tspan><tspan class="t2">#</tspan><tspan class="t1">+++</tspan><tspan class="t0">=====================</tspan></tspan>
+<tspan class="px" x="44" y="471" style="animation-delay:0.261s"><tspan class="t1">+++++++++++++++++</tspan><tspan class="t0">===========</tspan><tspan class="t1">+</tspan><tspan class="t2">#</tspan><tspan class="t1">+</tspan><tspan class="t0">--------=</tspan><tspan class="t1">+********++*</tspan><tspan class="t2">#@##</tspan><tspan class="t1">+</tspan><tspan class="t0">===================</tspan></tspan>
+<tspan class="px" x="44" y="484" style="animation-delay:0.270s"><tspan class="t1">++++++++++++++</tspan><tspan class="t0">==</tspan><tspan class="t1">++</tspan><tspan class="t0">========</tspan><tspan class="t1">+</tspan><tspan class="t2">%%#</tspan><tspan class="t1">*</tspan><tspan class="t0">------===</tspan><tspan class="t1">++++**+++++*</tspan><tspan class="t2">#@@@@@@@</tspan><tspan class="t1">+</tspan><tspan class="t0">===============</tspan></tspan>
+<tspan class="px" x="44" y="497" style="animation-delay:0.279s"><tspan class="t1">+++++++++++++++</tspan><tspan class="t0">=========</tspan><tspan class="t1">*</tspan><tspan class="t2">#%@%%##</tspan><tspan class="t0">----====</tspan><tspan class="t1">+++***++*++</tspan><tspan class="t2">#@@@@@@@@@@@%#</tspan><tspan class="t1">+</tspan><tspan class="t0">==========</tspan></tspan>
+<tspan class="px" x="44" y="510" style="animation-delay:0.288s"><tspan class="t1">++++++++++++</tspan><tspan class="t0">==</tspan><tspan class="t1">+</tspan><tspan class="t0">======</tspan><tspan class="t1">+</tspan><tspan class="t2">%%%%#@@%%%%%</tspan><tspan class="t1">*</tspan><tspan class="t0">===</tspan><tspan class="t1">++++**+++++*</tspan><tspan class="t2">%@@@@@@@@@@@@@@@@%#</tspan><tspan class="t1">+</tspan><tspan class="t0">======</tspan></tspan>
+<tspan class="px" x="44" y="523" style="animation-delay:0.297s"><tspan class="t1">+++++++++++++</tspan><tspan class="t0">=</tspan><tspan class="t1">++</tspan><tspan class="t0">==</tspan><tspan class="t1">*</tspan><tspan class="t2">%%%%%%%##@%%%%%%%%%%####</tspan><tspan class="t1">*+++</tspan><tspan class="t2">#%@@@@@@%@@@@@%@@%%%%%@%%%</tspan><tspan class="t1">+</tspan><tspan class="t0">==</tspan></tspan>
+<tspan class="px" x="44" y="536" style="animation-delay:0.306s"><tspan class="t1">++++++++++</tspan><tspan class="t0">==</tspan><tspan class="t1">++</tspan><tspan class="t0">=</tspan><tspan class="t1">+</tspan><tspan class="t2">##%%#%%%%%%#%@%%%%%%%%%%%%%%@@@@@@@@@@@%@@@@%%@%%%%%@@%@@%%#</tspan></tspan>
+<tspan class="px" x="44" y="549" style="animation-delay:0.315s"><tspan class="t1">+++++++++++++</tspan><tspan class="t2">##%#%%%%%#%@%%%#@%%%%%%%%##%%%%%%@@@@@%%@@%@@@@%%@%%@%%@%@@%%@@</tspan></tspan>
+<tspan class="px" x="44" y="562" style="animation-delay:0.324s"><tspan class="t1">+++++++++++</tspan><tspan class="t2">#%%%%%##%%%@%%@@%#%@%%%%%%@%%%%%@@@@@%%@%%@%%@@@@%%@@%%%@%%@%%@@@</tspan></tspan>
+<tspan class="px" x="44" y="575" style="animation-delay:0.333s"><tspan class="t1">+++++++++</tspan><tspan class="t2">#%%%%%%%%%#@%%@%%@@%#@@%%%%%%@%%%%%%%@@%%%%%%%%%@@%%%%@%%%@%@@%%%@@</tspan></tspan>
+<tspan class="px" x="44" y="588" style="animation-delay:0.342s"><tspan class="t1">++++++++</tspan><tspan class="t2">###%%%%%%%%%%@%%@%%@%%%@%%%%%%%@@%%%@@@%%%%%%%%%%@@%%%%@%%@%%@%%%@@@</tspan></tspan>
+<tspan class="px" x="44" y="601" style="animation-delay:0.351s"><tspan class="t1">+++++++</tspan><tspan class="t2">###%##%%%%%%%%%@%@%%@@%%%@%%%%%%%@@%%@@@%%%%%%%%%%@%%%@%@@%@%%%%%@%%@</tspan></tspan>
+<tspan class="px" x="44" y="614" style="animation-delay:0.360s"><tspan class="t1">++++++</tspan><tspan class="t2">####%%%%%%%%%%%%%%@@%%@@%%@@%%%%%%%@@%%@@%%%%%%%%%%%%%%@%%@%%%%@%@%@@@</tspan></tspan>
+</text>
+</g>
+<rect class="hit" x="36" y="83" width="512" height="542"/>
+</g>
+<text x="567" y="94" font-size="16px" xml:space="preserve">
+<tspan class="ln" x="567" y="94" style="animation-delay:0.000s"><tspan class="k">ishraq</tspan><tspan class="kk">@</tspan><tspan class="v">kodezi</tspan><tspan class="r"> </tspan><tspan class="r">──────────────────────────────────────────────</tspan></tspan>
+<tspan class="ln" x="567" y="114" style="animation-delay:0.018s"><tspan class="d">. </tspan><tspan class="k">OS</tspan><tspan class="kk">:</tspan><tspan class="d"> ............................ </tspan><tspan class="v">macOS, Ubuntu, Windows 11</tspan></tspan>
+<tspan class="ln" x="567" y="134" style="animation-delay:0.036s"><tspan class="d">. </tspan><tspan class="k">Uptime</tspan><tspan class="kk">:</tspan><tspan class="d"> ....................... </tspan><tspan class="v">22 years, 9 months, 0 days</tspan></tspan>
+<tspan class="ln" x="567" y="154" style="animation-delay:0.054s"><tspan class="d">. </tspan><tspan class="k">Host</tspan><tspan class="kk">:</tspan><tspan class="d"> ............................. </tspan><tspan class="v">Kodezi - Founder &amp; CEO</tspan></tspan>
+<tspan class="ln" x="567" y="174" style="animation-delay:0.072s"><tspan class="d">. </tspan><tspan class="k">Kernel</tspan><tspan class="kk">:</tspan><tspan class="d"> ...................... </tspan><tspan class="v">Autonomous software systems</tspan></tspan>
+<tspan class="ln" x="567" y="194" style="animation-delay:0.090s"><tspan class="d">. </tspan><tspan class="k">Location</tspan><tspan class="kk">:</tspan><tspan class="d"> ...................... </tspan><tspan class="v">San Francisco, California</tspan></tspan>
+<tspan class="ln" x="567" y="214" style="animation-delay:0.108s"><tspan class="d">.</tspan></tspan>
+<tspan class="ln" x="567" y="234" style="animation-delay:0.126s"><tspan class="d">. </tspan><tspan class="k">Languages</tspan><tspan class="kk">.</tspan><tspan class="k">Programming</tspan><tspan class="kk">:</tspan><tspan class="d"> .......... </tspan><tspan class="v">TypeScript, Python, Rust</tspan></tspan>
+<tspan class="ln" x="567" y="254" style="animation-delay:0.144s"><tspan class="d">. </tspan><tspan class="k">Languages</tspan><tspan class="kk">.</tspan><tspan class="k">Markup</tspan><tspan class="kk">:</tspan><tspan class="d"> .................. </tspan><tspan class="v">HTML, CSS, JSON, YAML</tspan></tspan>
+<tspan class="ln" x="567" y="274" style="animation-delay:0.162s"><tspan class="d">. </tspan><tspan class="k">Languages</tspan><tspan class="kk">.</tspan><tspan class="k">Real</tspan><tspan class="kk">:</tspan><tspan class="d"> ......................... </tspan><tspan class="v">English, Bengali</tspan></tspan>
+<tspan class="ln" x="567" y="294" style="animation-delay:0.180s"><tspan class="d">.</tspan></tspan>
+<tspan class="ln" x="567" y="314" style="animation-delay:0.198s"><tspan class="d">. </tspan><tspan class="k">Origin</tspan><tspan class="kk">:</tspan><tspan class="d"> .................. </tspan><tspan class="v">Dhaka, Bangladesh -&gt; U.S., 2011</tspan></tspan>
+<tspan class="ln" x="567" y="334" style="animation-delay:0.216s"><tspan class="d">. </tspan><tspan class="k">Path</tspan><tspan class="kk">:</tspan><tspan class="d"> ...................... </tspan><tspan class="v">Self-taught. Skipped college.</tspan></tspan>
+<tspan class="ln" x="567" y="354" style="animation-delay:0.234s"><tspan class="d">. </tspan><tspan class="k">Writing</tspan><tspan class="kk">:</tspan><tspan class="d"> .................... </tspan><tspan class="v">systems, culture, psychology</tspan></tspan>
+<tspan class="ln" x="567" y="374" style="animation-delay:0.252s"><tspan class="r">─ </tspan><tspan class="t">Kodezi</tspan><tspan class="r"> ───────────────────────────────────────────────────</tspan></tspan>
+<tspan class="ln" x="567" y="394" style="animation-delay:0.270s"><tspan class="d">. </tspan><tspan class="k">Product</tspan><tspan class="kk">:</tspan><tspan class="d"> .................... </tspan><a class="lnk" href="https://kodezi.com" target="_blank" rel="noopener noreferrer"><tspan class="v">the AI CTO for your codebase</tspan></a></tspan>
+<tspan class="ln" x="567" y="414" style="animation-delay:0.288s"><tspan class="d">. </tspan><tspan class="k">Does</tspan><tspan class="kk">:</tspan><tspan class="d"> ................. </tspan><tspan class="v">remembers, heals, evolves, governs</tspan></tspan>
+<tspan class="ln" x="567" y="434" style="animation-delay:0.306s"><tspan class="d">. </tspan><tspan class="k">Users</tspan><tspan class="kk">:</tspan><tspan class="d"> ............................. </tspan><tspan class="v">4,000,000+ developers</tspan></tspan>
+<tspan class="ln" x="567" y="454" style="animation-delay:0.324s"><tspan class="r">─ </tspan><tspan class="t">Contact</tspan><tspan class="r"> ──────────────────────────────────────────────────</tspan></tspan>
+<tspan class="ln" x="567" y="474" style="animation-delay:0.342s"><tspan class="d">. </tspan><tspan class="k">Email</tspan><tspan class="kk">:</tspan><tspan class="d"> ................................. </tspan><a class="lnk" href="mailto:ishraq@kodezi.com" target="_blank" rel="noopener noreferrer"><tspan class="v">ishraq@kodezi.com</tspan></a></tspan>
+<tspan class="ln" x="567" y="494" style="animation-delay:0.360s"><tspan class="d">. </tspan><tspan class="k">Web</tspan><tspan class="kk">:</tspan><tspan class="d"> ...................................... </tspan><a class="lnk" href="https://ishraqkhan.com" target="_blank" rel="noopener noreferrer"><tspan class="v">ishraqkhan.com</tspan></a></tspan>
+<tspan class="ln" x="567" y="514" style="animation-delay:0.378s"><tspan class="d">. </tspan><tspan class="k">X</tspan><tspan class="kk">:</tspan><tspan class="d"> .......................................... </tspan><a class="lnk" href="https://x.com/ishraqkhann" target="_blank" rel="noopener noreferrer"><tspan class="v">@ishraqkhann</tspan></a></tspan>
+<tspan class="ln" x="567" y="534" style="animation-delay:0.396s"><tspan class="d">. </tspan><tspan class="k">LinkedIn</tspan><tspan class="kk">:</tspan><tspan class="d"> .................................... </tspan><a class="lnk" href="https://www.linkedin.com/in/ishraqkhann/" target="_blank" rel="noopener noreferrer"><tspan class="v">ishraqkhann</tspan></a></tspan>
+<tspan class="ln" x="567" y="554" style="animation-delay:0.414s"><tspan class="d">. </tspan><tspan class="k">GitHub</tspan><tspan class="kk">:</tspan><tspan class="d"> ..................................... </tspan><a class="lnk" href="https://github.com/ishraqkhann" target="_blank" rel="noopener noreferrer"><tspan class="v">@ishraqkhann</tspan></a></tspan>
+<tspan class="ln" x="567" y="574" style="animation-delay:0.432s"><tspan class="r">─ </tspan><tspan class="t">GitHub Stats</tspan><tspan class="r"> ─────────────────────────────────────────────</tspan></tspan>
+<tspan class="ln" x="567" y="594" style="animation-delay:0.450s"><tspan class="d">. </tspan><tspan class="k">Repos</tspan><tspan class="kk">:</tspan><tspan class="d"> ...... </tspan><tspan class="v">56</tspan><tspan class="kk"> {</tspan><tspan class="k">Contributed</tspan><tspan class="kk">: </tspan><tspan class="v">66</tspan><tspan class="kk">} | </tspan><tspan class="k">Stars</tspan><tspan class="kk">:</tspan><tspan class="d"> ............ </tspan><tspan class="v">0</tspan></tspan>
+<tspan class="ln" x="567" y="614" style="animation-delay:0.468s"><tspan class="d">. </tspan><tspan class="k">Commits</tspan><tspan class="kk">:</tspan><tspan class="d"> ............... </tspan><tspan class="v">18,013</tspan><tspan class="kk"> | </tspan><tspan class="k">Followers</tspan><tspan class="kk">:</tspan><tspan class="d"> .......... </tspan><tspan class="v">67</tspan></tspan>
+<tspan class="ln" x="567" y="634" style="animation-delay:0.486s"><tspan class="d">. </tspan><tspan class="k">Lines of Code</tspan><tspan class="kk">:</tspan><tspan class="d"> ....... </tspan><tspan class="v">5,665,895</tspan><tspan class="kk"> ( </tspan><tspan class="a">5,727,156</tspan><tspan class="kk">++, </tspan><tspan class="x">61,261</tspan><tspan class="kk">-- )</tspan></tspan>
+<tspan class="ln" x="567" y="654" style="animation-delay:0.504s"><tspan class="d">. </tspan><tspan class="k">Level</tspan><tspan class="kk"> </tspan><tspan class="v">180</tspan><tspan class="kk"> </tspan><tspan class="d">[</tspan><tspan class="bf">███</tspan><tspan class="be">░░░░░░░░░░░░░░░░░</tspan><tspan class="d">]</tspan><tspan class="d"> ............... </tspan><tspan class="a">13/100 XP</tspan></tspan>
+<tspan class="ln" x="567" y="674" style="animation-delay:0.522s"><tspan class="k">ishraq</tspan><tspan class="kk">@</tspan><tspan class="v">kodezi</tspan><tspan class="kk">:~$ </tspan></tspan>
+</text>
+<rect class="cursor" x="729.9" y="662" width="9.6" height="15" rx="1"/>
+<set attributeName="display" to="none" begin="btnClose.click" fill="freeze"/>
+<set attributeName="display" to="inline" begin="reopen.click" fill="freeze"/>
+</g>
+<g id="closed" display="none">
+  <rect x="20" y="20" width="1150" height="718" rx="12" fill="#000000"
+        fill-opacity=".35" stroke="#808080" stroke-opacity=".5"
+        stroke-width="1.5" stroke-dasharray="8 6"/>
+  <text x="595.0" y="375.0" text-anchor="middle" font-size="15px"
+        fill="#808080">[ process completed ]</text>
+  <text x="595.0" y="401.0" text-anchor="middle" font-size="13px"
+        fill="#808080" fill-opacity=".7">click anywhere to reopen</text>
+  <rect id="reopen" x="20" y="20" width="1150" height="718" rx="12"
+        fill="transparent"/>
+  <set attributeName="display" to="inline" begin="btnClose.click" fill="freeze"/>
+  <set attributeName="display" to="none" begin="reopen.click" fill="freeze"/>
+</g>
+</svg>
